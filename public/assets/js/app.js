@@ -2,8 +2,8 @@
 Template Name: StarCode & Dashboard Template
 Author: StarCode Kh
 Version: 1.1.0
-Website: https://StarCode Kh.in/
-Contact: StarCode Kh@gmail.com
+Website: https://souysoeng.com/
+Contact: souysoeng.kh@gmail.com
 File: Main Js File
 */
 
@@ -28,25 +28,9 @@ function initLanguage() {
 function setLanguage(lang) {
     if (document.getElementById("header-lang-img")) {
         if (lang == "en") {
-            document.getElementById("header-lang-img").src = "assets/images/flags/20/us.svg";
-        } else if (lang == "sp") {
-            document.getElementById("header-lang-img").src = "assets/images/flags/20/es.svg";
-        } else if (lang == "gr") {
-            document.getElementById("header-lang-img").src = "assets/images/flags/20/de.svg";
-        } else if (lang == "it") {
-            document.getElementById("header-lang-img").src = "assets/images/flags/20/it.svg";
-        } else if (lang == "ru") {
-            document.getElementById("header-lang-img").src = "assets/images/flags/20/ru.svg";
-        } else if (lang == "ch") {
-            document.getElementById("header-lang-img").src = "assets/images/flags/20/china.svg";
-        } else if (lang == "fr") {
-            document.getElementById("header-lang-img").src = "assets/images/flags/20/fr.svg";
-        } else if (lang == "ar") {
-            document.getElementById("header-lang-img").src = "assets/images/flags/20/ae.svg";
-        } else if (lang == "jp") {
-            document.getElementById("header-lang-img").src = "assets/images/flags/20/jp.svg";
-        } else if (lang == "ar") {
-            document.getElementById("header-lang-img").src = "assets/images/flags/20/ae.svg";
+            document.getElementById("header-lang-img").src = "/assets/images/flag/us.svg";
+        } else if (lang == "kh") {
+            document.getElementById("header-lang-img").src = "/assets/images/flag/kh.png";
         }
         localStorage.setItem("language", lang);
         language = localStorage.getItem("language");
