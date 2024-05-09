@@ -75,6 +75,11 @@ Route::group(['namespace' => 'App\Http\Controllers'],function()
     Route::controller(AccountController::class)->group(function () {
         Route::get('page/account', 'index')->middleware('auth')->name('page/account');
     });
+
+    // -------------------------- hr ----------------------//
+    Route::controller(HRController::class)->group(function () {
+        Route::get('hr/employee/list', 'employeeList')->middleware('auth')->name('hr/employee/list');
+    });
 });
 
 
