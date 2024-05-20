@@ -17,4 +17,10 @@ class HRController extends Controller
     {
         return view('hr.holidays');
     }
+
+    /** leave Employee */
+    public function leaveEmployee()
+    {
+        return view('hr.leave-employee');
+    }
 }

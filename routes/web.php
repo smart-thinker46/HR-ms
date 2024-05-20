@@ -80,6 +80,7 @@ Route::group(['namespace' => 'App\Http\Controllers'],function()
     Route::controller(HRController::class)->group(function () {
         Route::get('hr/employee/list', 'employeeList')->middleware('auth')->name('hr/employee/list');
         Route::get('hr/holidays/page', 'holidayPage')->middleware('auth')->name('hr/holidays/page');
+        Route::get('hr/leave/employee/page', 'leaveEmployee')->middleware('auth')->name('hr/leave/employee/page');
     });
 });
 
