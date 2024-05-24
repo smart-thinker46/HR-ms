@@ -23,4 +23,10 @@ class HRController extends Controller
     {
         return view('hr.leave-employee');
     }
+
+    /** create Leave Employee */
+    public function createLeaveEmployee()
+    {
+        return view('hr.create-leave-employee');
+    }
 }
