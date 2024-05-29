@@ -34,4 +34,10 @@ class HRController extends Controller
     public function leaveHR() {
         return view('hr.leave-hr');
     }
+
+    /** attendance */
+    public function attendance()
+    {
+        return view('hr.attendance');
+    }
 }
