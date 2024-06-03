@@ -84,6 +84,7 @@ Route::group(['namespace' => 'App\Http\Controllers'],function()
         Route::get('hr/create/leave/employee/page', 'createLeaveEmployee')->middleware('auth')->name('hr/create/leave/employee/page');
         Route::get('hr/leave/hr/page', 'leaveHR')->middleware('auth')->name('hr/leave/hr/page');
         Route::get('hr/attendance/page', 'attendance')->middleware('auth')->name('hr/attendance/page');
+        Route::get('hr/create/leave/hr/page', 'createLeaveHR')->middleware('auth')->name('hr/create/leave/hr/page');
     });
 });
 
