@@ -74,7 +74,10 @@
                         </div><!--end col-->
                         <div class="xl:col-span-2 xl:col-start-11">
                             <div class="ltr:lg:text-right rtl:lg:text-left">
-                                <a href="apps-hr-create-leave.html" type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"><i data-lucide="plus" class="inline-block size-4"></i> <span class="align-middle">Add Leave</span></a>
+                                <a href="{{ route('hr/create/leave/hr/page') }}" type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                    <i data-lucide="plus" class="inline-block size-4"></i> 
+                                    <span class="align-middle">Add Leave</span>
+                                </a>
                             </div>
                         </div>
                     </div><!--col grid-->

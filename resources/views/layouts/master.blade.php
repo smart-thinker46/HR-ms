@@ -630,9 +630,9 @@
     <script src="{{ URL::to('assets/libs/prismjs/prism.js') }}"></script>
     <script src="{{ URL::to('assets/libs/lucide/umd/lucide.js') }}"></script>
     <script src="{{ URL::to('assets/js/starcode.bundle.js') }}"></script>
+    <script src="{{ URL::to('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
     <!--apexchart js-->
     <script src="{{ URL::to('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-    <script src="{{ URL::to('assets/js/pages/dashboards-hr.init.js') }}"></script>
     <!-- App js -->
     <script src="{{ URL::to('assets/js/app.js') }}"></script>
     @yield('script')

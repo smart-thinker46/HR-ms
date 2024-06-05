@@ -53,4 +53,10 @@ class HRController extends Controller
         return view('hr.attendance-main');
     }
 
+    /** department */
+    public function department()
+    {
+        return view('hr.department');
+    }
+
 }
