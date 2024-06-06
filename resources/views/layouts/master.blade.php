@@ -502,6 +502,18 @@
     <script src="{{ URL::to('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
     <!--apexchart js-->
     <script src="{{ URL::to('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    
+    <script src="{{ URL::to('assets/js/datatables/jquery-3.7.0.js') }}"></script>
+    <script src="{{ URL::to('assets/js/datatables/data-tables.min.js') }}"></script>
+    <script src="{{ URL::to('assets/js/datatables/data-tables.tailwindcss.min.js') }}"></script>
+    <!--buttons dataTables-->
+    <script src="{{ URL::to('assets/js/datatables/datatables.buttons.min.js') }}"></script>
+    <script src="{{ URL::to('assets/js/datatables/jszip.min.js') }}"></script>
+    <script src="{{ URL::to('assets/js/datatables/pdfmake.min.js') }}"></script>
+    <script src="{{ URL::to('assets/js/datatables/buttons.html5.min.js') }}"></script>
+    <script src="{{ URL::to('assets/js/datatables/buttons.print.min.js') }}"></script>
+    <script src="{{ URL::to('assets/js/datatables/datatables.init.js') }}"></script>
+
     <!-- App js -->
     <script src="{{ URL::to('assets/js/app.js') }}"></script>
     @yield('script')

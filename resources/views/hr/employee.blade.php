@@ -16,339 +16,89 @@
                     </li>
                 </ul>
             </div>
-            <div class="card" id="employeeTable">
-                <div class="card-body">
-                    <div class="flex items-center gap-3 mb-4">
-                        <h6 class="text-15 grow">Employee (<b class="total-Employs"></b>)</h6>
-                        <div class="shrink-0">
-                            <a href="#!" data-modal-target="addEmployeeModal" type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20 add-employee">
-                                <i data-lucide="plus" class="inline-block size-4"></i> 
-                                <span class="align-middle">Add Employee</span>
-                            </a>
-                        </div>
-                    </div>
 
-                    <div class="-mx-5 overflow-x-auto">
-                        <table class="w-full whitespace-nowrap">
-                            <thead class="ltr:text-left rtl:text-right">
-                                <tr class="bg-slate-100 dark:bg-zink-600">
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-b border-slate-200 dark:border-zink-500 ID">
-                                        Employee ID
-                                    </th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-b border-slate-200 dark:border-zink-500 Name">
-                                        Name
-                                    </th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-b border-slate-200 dark:border-zink-500 Role">
-                                        Designation
-                                    </th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-b border-slate-200 dark:border-zink-500 Email">
-                                        Email Id
-                                    </th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-b border-slate-200 dark:border-zink-500 Phone">
-                                        Phone Number
-                                    </th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-b border-slate-200 dark:border-zink-500 Country">
-                                        Location
-                                    </th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-b border-slate-200 dark:border-zink-500 Experience">
-                                        Experience
-                                    </th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-b border-slate-200 dark:border-zink-500 JoinDate">
-                                        Joining Date
-                                    </th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-b border-slate-200 dark:border-zink-500 Action">
-                                        Action
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody class="list" id="employeeList">
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 ID">
-                                        <a href="#!" class="transition-all duration-150 ease-linear text-custom-500 hover:text-custom-600">#STE1001501</a>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Name">
-                                        <a href="#!" class="flex items-center gap-3">
-                                            <div class="w-6 h-6 rounded-full shrink-0 bg-slate-100">
-                                                <img src="{{ URL::to('assets/images/profile.png') }}" alt="" class="h-6 rounded-full">
-                                            </div>
-                                            <h6 class="grow">StarCode Kh</h6>
-                                        </a>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Role">
-                                        Nuxt JS Developer
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Email">
-                                        starcode@starcode.com
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Phone">
-                                        070 3715 3689
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Country">
-                                        United States
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Experience">
-                                        3 Year
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 JoinDate">
-                                        05 Feb, 2020
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Action">
-                                        <div class="flex gap-3">
-                                            <a class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500" href="pages-account.html">
-                                                <i data-lucide="eye" class="inline-block size-3"></i>
-                                            </a>
-                                            <a href="#!" data-modal-target="addEmployeeModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 edit-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
-                                                <i data-lucide="pencil" class="size-4"></i>
-                                            </a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 remove-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
-                                                <i data-lucide="trash-2" class="size-4"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 ID">
-                                        <a href="#!" class="transition-all duration-150 ease-linear text-custom-500 hover:text-custom-600">#STE1001501</a>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Name">
-                                        <a href="#!" class="flex items-center gap-3">
-                                            <div class="w-6 h-6 rounded-full shrink-0 bg-slate-100">
-                                                <img src="{{ URL::to('assets/images/profile.png') }}" alt="" class="h-6 rounded-full">
-                                            </div>
-                                            <h6 class="grow">Willie Torres</h6>
-                                        </a>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Role">
-                                        Nuxt JS Developer
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Email">
-                                        willie@starcode.com
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Phone">
-                                        070 3715 3689
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Country">
-                                        United States
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Experience">
-                                        3 Year
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 JoinDate">
-                                        05 Feb, 2020
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Action">
-                                        <div class="flex gap-3">
-                                            <a class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500" href="pages-account.html">
-                                                <i data-lucide="eye" class="inline-block size-3"></i>
-                                            </a>
-                                            <a href="#!" data-modal-target="addEmployeeModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 edit-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
-                                                <i data-lucide="pencil" class="size-4"></i>
-                                            </a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 remove-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
-                                                <i data-lucide="trash-2" class="size-4"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 ID">
-                                        <a href="#!" class="transition-all duration-150 ease-linear text-custom-500 hover:text-custom-600">#STE1001501</a>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Name">
-                                        <a href="#!" class="flex items-center gap-3">
-                                            <div class="w-6 h-6 rounded-full shrink-0 bg-slate-100">
-                                                <img src="assets/images/user-1.jpg" alt="" class="h-6 rounded-full">
-                                            </div>
-                                            <h6 class="grow">Willie Torres</h6>
-                                        </a>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Role">
-                                        Nuxt JS Developer
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Email">
-                                        willie@starcode.com
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Phone">
-                                        070 3715 3689
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Country">
-                                        United States
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Experience">
-                                        3 Year
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 JoinDate">
-                                        05 Feb, 2020
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Action">
-                                        <div class="flex gap-3">
-                                            <a class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500" href="pages-account.html">
-                                                <i data-lucide="eye" class="inline-block size-3"></i>
-                                            </a>
-                                            <a href="#!" data-modal-target="addEmployeeModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 edit-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
-                                                <i data-lucide="pencil" class="size-4"></i>
-                                            </a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 remove-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
-                                                <i data-lucide="trash-2" class="size-4"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 ID">
-                                        <a href="#!" class="transition-all duration-150 ease-linear text-custom-500 hover:text-custom-600">#STE1001501</a>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Name">
-                                        <a href="#!" class="flex items-center gap-3">
-                                            <div class="w-6 h-6 rounded-full shrink-0 bg-slate-100">
-                                                <img src="assets/images/user-1.jpg" alt="" class="h-6 rounded-full">
-                                            </div>
-                                            <h6 class="grow">Willie Torres</h6>
-                                        </a>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Role">
-                                        Nuxt JS Developer
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Email">
-                                        willie@starcode.com
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Phone">
-                                        070 3715 3689
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Country">
-                                        United States
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Experience">
-                                        3 Year
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 JoinDate">
-                                        05 Feb, 2020
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Action">
-                                        <div class="flex gap-3">
-                                            <a class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500" href="pages-account.html">
-                                                <i data-lucide="eye" class="inline-block size-3"></i>
-                                            </a>
-                                            <a href="#!" data-modal-target="addEmployeeModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 edit-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
-                                                <i data-lucide="pencil" class="size-4"></i>
-                                            </a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 remove-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
-                                                <i data-lucide="trash-2" class="size-4"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 ID">
-                                        <a href="#!" class="transition-all duration-150 ease-linear text-custom-500 hover:text-custom-600">#STE1001501</a>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Name">
-                                        <a href="#!" class="flex items-center gap-3">
-                                            <div class="w-6 h-6 rounded-full shrink-0 bg-slate-100">
-                                                <img src="{{ URL::to('assets/images/profile.png') }}" alt="" class="h-6 rounded-full">
-                                            </div>
-                                            <h6 class="grow">Willie Torres</h6>
-                                        </a>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Role">
-                                        Nuxt JS Developer
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Email">
-                                        willie@starcode.com
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Phone">
-                                        070 3715 3689
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Country">
-                                        United States
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Experience">
-                                        3 Year
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 JoinDate">
-                                        05 Feb, 2020
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Action">
-                                        <div class="flex gap-3">
-                                            <a class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500" href="pages-account.html">
-                                                <i data-lucide="eye" class="inline-block size-3"></i>
-                                            </a>
-                                            <a href="#!" data-modal-target="addEmployeeModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 edit-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
-                                                <i data-lucide="pencil" class="size-4"></i>
-                                            </a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 remove-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
-                                                <i data-lucide="trash-2" class="size-4"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 ID">
-                                        <a href="#!" class="transition-all duration-150 ease-linear text-custom-500 hover:text-custom-600">#STE1001501</a>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Name">
-                                        <a href="#!" class="flex items-center gap-3">
-                                            <div class="w-6 h-6 rounded-full shrink-0 bg-slate-100">
-                                                <img src="{{ URL::to('assets/images/profile.png') }}" alt="" class="h-6 rounded-full">
-                                            </div>
-                                            <h6 class="grow">Willie Torres</h6>
-                                        </a>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Role">
-                                        Nuxt JS Developer
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Email">
-                                        willie@starcode.com
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Phone">
-                                        070 3715 3689
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Country">
-                                        United States
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Experience">
-                                        3 Year
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 JoinDate">
-                                        05 Feb, 2020
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Action">
-                                        <div class="flex gap-3">
-                                            <a class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500" href="pages-account.html">
-                                                <i data-lucide="eye" class="inline-block size-3"></i>
-                                            </a>
-                                            <a href="#!" data-modal-target="addEmployeeModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 edit-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
-                                                <i data-lucide="pencil" class="size-4"></i>
-                                            </a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 remove-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
-                                                <i data-lucide="trash-2" class="size-4"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="flex flex-col items-center gap-4 px-4 mt-4 md:flex-row" id="pagination-element">
-                        <div class="grow">
-                            <p class="text-slate-500 dark:text-zink-200">Showing <b class="showing">10</b> of <b class="total-records">38</b> Results</p>
-                        </div>
-                        <div class="col-sm-auto mt-sm-0">
-                            <div class="flex gap-2 pagination-wrap justify-content-center">
-                                <a class="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto page-item pagination-prev " href="javascript:void(0)">
-                                    <i class="mr-1 size-4 rtl:rotate-180" data-lucide="chevron-left"></i> Prev
-                                </a>
-                                <ul class="flex flex-wrap items-center gap-2 pagination listjs-pagination">
-                                </ul>
-                                <a class="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto page-item pagination-next" href="javascript:void(0)">
-                                    Next <i class="ml-1 size-4 rtl:rotate-180" data-lucide="chevron-right"></i>
-                                </a>
-                            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="flex items-center">
+                        <h6 class="text-15 grow">Users List</h6>
+                        <div class="shrink-0">
+                            <button data-modal-target="addEmployeeModal" type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" class="lucide lucide-plus inline-block size-4">
+                                    <path d="M5 12h14"></path>
+                                    <path d="M12 5v14"></path>
+                                </svg> 
+                                <span class="align-middle">Add Employee</span>
+                            </button>
                         </div>
                     </div>
+                    <br>
+                    <table id="alternativePagination" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th class="ltr:!text-left rtl:!text-right">Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Join Date</th>
+                                <th>Last Login</th>
+                                <th>Role</th>
+                                <th>Departement</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                <td>00012</td>
+                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5">
+                                    <div class="flex items-center gap-2">
+                                        <div class="flex items-center justify-center font-medium rounded-full size-10 shrink-0 bg-slate-200 text-slate-800 dark:text-zink-50 dark:bg-zink-600">
+                                            <img src="{{ URL::to('assets/images/profile.png') }}" alt="" class="h-10 rounded-full">
+                                        </div>
+                                        <div class="grow">
+                                            <h6 class="mb-1"><a href="#!" class="name">StarCode Kh</a></h6>
+                                            <p class="text-slate-500 dark:text-zink-200">Web Developer</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>starcodekh@gmail.com</td>
+                                <td>045645645</td>
+                                <td>04 Jan, 2023</td>
+                                <td>2 days ago</td>
+                                <td>Admin</td>
+                                <td>IT Department</td>
+                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5">
+                                    <span class="px-2.5 py-0.5 text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent inline-flex items-center status">
+                                        <i data-lucide="check-circle" class="size-3 mr-1.5"></i> 
+                                        Active
+                                    </span>
+                                </td>
+                                <td class="Action">
+                                    <div class="flex gap-3">
+                                        <a class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500" href="pages-account.html">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" class="lucide lucide-eye inline-block size-3">
+                                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle>
+                                            </svg> 
+                                        </a>
+                                        <a href="#!" data-modal-target="addEmployeeModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 edit-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="pencil" class="lucide lucide-pencil size-4">
+                                                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path><path d="m15 5 4 4"></path>
+                                            </svg>
+                                        </a>
+                                        <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 remove-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trash-2" class="lucide lucide-trash-2 size-4">
+                                                <path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                                                <line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-
+            <!--end card-->
         </div>
     </div>
     <!-- End Page-content -->
@@ -492,6 +242,6 @@
     <!--end delete modal-->
 
 @section('script')
-    <script src="{{ URL::to('assets/js/pages/apps-hr-employee.init.js') }}"></script>
+
 @endsection
 @endsection
