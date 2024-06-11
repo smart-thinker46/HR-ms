@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use app\Models\User;
 use Illuminate\Http\Request;
 
 class HRController extends Controller
@@ -9,7 +10,8 @@ class HRController extends Controller
     /** employee list */
     public function employeeList()
     {
-        return view('HR.employee');
+        $employeeList = User::all();
+        return view('HR.employee',compact('employeeList'));
     }
 
     /** holiday Page */

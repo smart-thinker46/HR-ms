@@ -20,7 +20,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="flex items-center">
-                        <h6 class="text-15 grow">Users List</h6>
+                        <h6 class="text-15 grow">Employee List</h6>
                         <div class="shrink-0">
                             <button data-modal-target="addEmployeeModal" type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" class="lucide lucide-plus inline-block size-4">
@@ -35,6 +35,7 @@
                     <table id="alternativePagination" class="display" style="width:100%">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Employee ID</th>
                                 <th class="ltr:!text-left rtl:!text-right">Name</th>
                                 <th>Email</th>
@@ -48,52 +49,69 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                <td>00012</td>
-                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5">
-                                    <div class="flex items-center gap-2">
-                                        <div class="flex items-center justify-center font-medium rounded-full size-10 shrink-0 bg-slate-200 text-slate-800 dark:text-zink-50 dark:bg-zink-600">
-                                            <img src="{{ URL::to('assets/images/profile.png') }}" alt="" class="h-10 rounded-full">
+                            @foreach($employeeList as $key => $employee)
+                                @php
+                                    $fullName = $employee->name;
+                                    $parts = explode(' ', $fullName);
+                                    $initials = '';
+                                    foreach ($parts as $part) {
+                                        $initials .= strtoupper(substr($part, 0, 1));
+                                    }
+                                @endphp
+                                <tr class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                    <td>{{ ++$key }}</td>
+                                    <td>{{ $employee->user_id }}</td>
+                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5">
+                                        <div class="flex items-center gap-2">
+                                            <div class="flex items-center justify-center font-medium rounded-full size-10 shrink-0 bg-slate-200 text-slate-800 dark:text-zink-50 dark:bg-zink-600">
+                                                @if(!empty($employee->avatar))
+                                                    <img src="{{ URL::to('assets/images/profile.png') }}" alt="" class="h-10 rounded-full">
+                                                @else  
+                                                <div class="flex items-center justify-center font-medium rounded-full size-10 shrink-0 bg-slate-200 text-slate-800 dark:text-zink-50 dark:bg-zink-600">
+                                                   {{ $initials }}
+                                                </div>
+                                                @endif
+                                            </div>
+                                            <div class="grow">
+                                                <h6 class="mb-1"><a href="#!" class="name">{{ $employee->name }}</a></h6>
+                                                <p class="text-slate-500 dark:text-zink-200">{{ $employee->position }}</p>
+                                            </div>
                                         </div>
-                                        <div class="grow">
-                                            <h6 class="mb-1"><a href="#!" class="name">StarCode Kh</a></h6>
-                                            <p class="text-slate-500 dark:text-zink-200">Web Developer</p>
+                                    </td>
+                                    <td>{{ $employee->email }}</td>
+                                    <td>{{ $employee->phone_number }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($employee->join_date)->diffForHumans(); }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($employee->last_login)->diffForHumans(); }}</td>
+                                    <td>{{ $employee->role_name }}</td>
+                                    <td>{{ $employee->department }}</td>
+                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5">
+                                        <span class="px-2.5 py-0.5 text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent inline-flex items-center status">
+                                            <i data-lucide="check-circle" class="size-3 mr-1.5"></i> 
+                                            Active
+                                        </span>
+                                    </td>
+                                    <td class="Action">
+                                        <div class="flex gap-3">
+                                            <a class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500" href="pages-account.html">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" class="lucide lucide-eye inline-block size-3">
+                                                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle>
+                                                </svg> 
+                                            </a>
+                                            <a href="#!" data-modal-target="addEmployeeModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 edit-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="pencil" class="lucide lucide-pencil size-4">
+                                                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path><path d="m15 5 4 4"></path>
+                                                </svg>
+                                            </a>
+                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 remove-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trash-2" class="lucide lucide-trash-2 size-4">
+                                                    <path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                                                    <line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line>
+                                                </svg>
+                                            </a>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>starcodekh@gmail.com</td>
-                                <td>045645645</td>
-                                <td>04 Jan, 2023</td>
-                                <td>2 days ago</td>
-                                <td>Admin</td>
-                                <td>IT Department</td>
-                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5">
-                                    <span class="px-2.5 py-0.5 text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent inline-flex items-center status">
-                                        <i data-lucide="check-circle" class="size-3 mr-1.5"></i> 
-                                        Active
-                                    </span>
-                                </td>
-                                <td class="Action">
-                                    <div class="flex gap-3">
-                                        <a class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500" href="pages-account.html">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" class="lucide lucide-eye inline-block size-3">
-                                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle>
-                                            </svg> 
-                                        </a>
-                                        <a href="#!" data-modal-target="addEmployeeModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 edit-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="pencil" class="lucide lucide-pencil size-4">
-                                                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path><path d="m15 5 4 4"></path>
-                                            </svg>
-                                        </a>
-                                        <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 remove-item-btn bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trash-2" class="lucide lucide-trash-2 size-4">
-                                                <path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-                                                <line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
