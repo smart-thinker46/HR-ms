@@ -3,142 +3,68 @@
     <!-- Page-content -->
         <div class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
             <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
-
                 <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
                     <div class="grow">
-                        <h5 class="text-16">Departments</h5>
+                        <h5 class="text-16">Departments List</h5>
                     </div>
                     <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
                         <li class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
                             <a href="#!" class="text-slate-400 dark:text-zink-200">HR Management</a>
                         </li>
                         <li class="text-slate-700 dark:text-zink-100">
-                            Departments
+                            Departments List
                         </li>
                     </ul>
                 </div>
-                <div class="card" id="ordersTable">
+    
+                <div class="card">
                     <div class="card-body">
-                        <div class="flex items-center gap-3 mb-4">
+                        <div class="flex items-center">
                             <h6 class="text-15 grow">Departments</h6>
                             <div class="shrink-0">
-                                <a href="#!" data-modal-target="addDepartmentModal" type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"><i data-lucide="plus" class="inline-block size-4"></i> <span class="align-middle">Add Department</span></a>
+                                <button data-modal-target="addDepartmentModal" type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" class="lucide lucide-plus inline-block size-4">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5v14"></path>
+                                    </svg> 
+                                    <span class="align-middle">Add Departments</span>
+                                </button>
                             </div>
                         </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full whitespace-nowrap">
-                                <thead class="ltr:text-left rtl:text-right">
-                                    <tr>
-                                        <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">#</th>
-                                        <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Department Name</th>
-                                        <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Head of Dep.</th>
-                                        <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Phone Number</th>
-                                        <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Email</th>
-                                        <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Employee</th>
-                                        <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="">
-                                    <tr>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">1</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Web Development</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Patricia Garcia</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">077 7317 7572</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">PatriciaJGarcia@starcode.com</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">15</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                            <div class="flex gap-2">
-                                                <a href="#!" data-modal-target="addDepartmentModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/20"><i data-lucide="pencil" class="size-4"></i></a>
-                                                <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-red-500 dark:hover:text-red-500 hover:bg-red-100 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">2</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">IOS Application Development</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Jonas Frederiksen</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">61 53 62 05</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">jonas@starcode.com</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">09</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                            <div class="flex gap-2">
-                                                <a href="#!" data-modal-target="addDepartmentModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/20"><i data-lucide="pencil" class="size-4"></i></a>
-                                                <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-red-500 dark:hover:text-red-500 hover:bg-red-100 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">3</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Designing</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Juliette Fecteau</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">07231 96 25 88</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">JulietteFecteau@starcode.com</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">11</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                            <div class="flex gap-2">
-                                                <a href="#!" data-modal-target="addDepartmentModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/20"><i data-lucide="pencil" class="size-4"></i></a>
-                                                <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-red-500 dark:hover:text-red-500 hover:bg-red-100 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">4</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">HR Management</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Thomas Hatfield</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">0911 47 65 49</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">thomas@starcode.com</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">03</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                            <div class="flex gap-2">
-                                                <a href="#!" data-modal-target="addDepartmentModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/20"><i data-lucide="pencil" class="size-4"></i></a>
-                                                <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-red-500 dark:hover:text-red-500 hover:bg-red-100 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">5</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Accounts Management</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Holly Kavanaugh</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">819 947 5846</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">HollyKavanaugh@starcode.com</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">02</td>
-                                        <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                            <div class="flex gap-2">
-                                                <a href="#!" data-modal-target="addDepartmentModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/20"><i data-lucide="pencil" class="size-4"></i></a>
-                                                <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-red-500 dark:hover:text-red-500 hover:bg-red-100 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="flex flex-col items-center mt-5 md:flex-row">
-                            <div class="mb-4 grow md:mb-0">
-                                <p class="text-slate-500 dark:text-zink-200">Showing <b>5</b> of <b>8</b> Results</p>
-                            </div>
-                            <ul class="flex flex-wrap items-center gap-2 shrink-0">
-                                <li>
-                                    <a href="#!" class="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto"><i class="mr-1 size-4 rtl:rotate-180" data-lucide="chevron-left"></i> Prev</a>
-                                </li>
-                                <li>
-                                    <a href="#!" class="inline-flex items-center justify-center bg-white dark:bg-zink-700 size-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">1</a>
-                                </li>
-                                <li>
-                                    <a href="#!" class="inline-flex items-center justify-center bg-white dark:bg-zink-700 size-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto active">2</a>
-                                </li>
-                                <li>
-                                    <a href="#!" class="inline-flex items-center justify-center bg-white dark:bg-zink-700 size-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">3</a>
-                                </li>
-                                <li>
-                                    <a href="#!" class="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">Next <i class="ml-1 size-4 rtl:rotate-180" data-lucide="chevron-right"></i></a>
-                                </li>
-                            </ul>
-                        </div>
+                        <br>
+                        <table id="alternativePagination" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">No</th>
+                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Department Name</th>
+                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Head of Dep.</th>
+                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Phone Number</th>
+                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Email</th>
+                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Employee</th>
+                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">4</td>
+                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">HR Management</td>
+                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Thomas Hatfield</td>
+                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">0911 47 65 49</td>
+                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">thomas@starcode.com</td>
+                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">03</td>
+                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
+                                        <div class="flex gap-2">
+                                            <a href="#!" data-modal-target="addDepartmentModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/20"><i data-lucide="pencil" class="size-4"></i></a>
+                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-red-500 dark:hover:text-red-500 hover:bg-red-100 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-
+                <!--end card-->
             </div>
-            <!-- container-fluid -->
         </div>
     <!-- End Page-content -->
 
