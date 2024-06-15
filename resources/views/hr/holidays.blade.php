@@ -3,201 +3,66 @@
     <!-- Page-content -->
     <div class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
         <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
-
             <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
                 <div class="grow">
-                    <h5 class="text-16">Holidays</h5>
+                    <h5 class="text-16">Holidays List</h5>
                 </div>
                 <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
                     <li class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
                         <a href="#!" class="text-slate-400 dark:text-zink-200">HR Management</a>
                     </li>
                     <li class="text-slate-700 dark:text-zink-100">
-                        Holidays
+                        Holidays List
                     </li>
                 </ul>
             </div>
-            <div class="card" id="ordersTable">
+
+            <div class="card">
                 <div class="card-body">
-                    <div class="flex items-center gap-3 mb-4">
+                    <div class="flex items-center">
                         <h6 class="text-15 grow">Holidays 2024</h6>
                         <div class="shrink-0">
-                            <a href="#!" data-modal-target="addHolidayModal" type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"><i data-lucide="plus" class="inline-block size-4"></i> <span class="align-middle">Add Holiday</span></a>
+                            <button data-modal-target="addHolidayModal" type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" class="lucide lucide-plus inline-block size-4">
+                                    <path d="M5 12h14"></path>
+                                    <path d="M12 5v14"></path>
+                                </svg> 
+                                <span class="align-middle">Add Holiday</span>
+                            </button>
                         </div>
                     </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full whitespace-nowrap">
-                            <thead class="ltr:text-left rtl:text-right">
-                                <tr>
-                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">#</th>
-                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Day</th>
-                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Date</th>
-                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Holiday Name</th>
-                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Type</th>
-                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="">
-                                <tr>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">1</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Monday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">15 Jan</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Makara Sankranti</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Gazetted Holiday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                        <div class="flex gap-2">
-                                            <a href="#!" data-modal-target="addHolidayModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500"><i data-lucide="pencil" class="size-4"></i></a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-red-500 hover:bg-red-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:text-red-500 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">2</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Friday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">26 Jan</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Republic Day</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Gazetted Holiday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                        <div class="flex gap-2">
-                                            <a href="#!" data-modal-target="addHolidayModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500"><i data-lucide="pencil" class="size-4"></i></a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-red-500 hover:bg-red-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:text-red-500 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">3</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Monday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">25 Mar</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Holi</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Gazetted Holiday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                        <div class="flex gap-2">
-                                            <a href="#!" data-modal-target="addHolidayModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500"><i data-lucide="pencil" class="size-4"></i></a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-red-500 hover:bg-red-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:text-red-500 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">4</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Friday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">29 Mar</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Good Friday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Gazetted Holiday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                        <div class="flex gap-2">
-                                            <a href="#!" data-modal-target="addHolidayModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500"><i data-lucide="pencil" class="size-4"></i></a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-red-500 hover:bg-red-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:text-red-500 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">5</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Sunday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">4 Aug</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Friendship Day</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Observance</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                        <div class="flex gap-2">
-                                            <a href="#!" data-modal-target="addHolidayModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500"><i data-lucide="pencil" class="size-4"></i></a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-red-500 hover:bg-red-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:text-red-500 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">6</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Thursday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">15 Aug</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Independence Day</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Gazetted Holiday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                        <div class="flex gap-2">
-                                            <a href="#!" data-modal-target="addHolidayModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500"><i data-lucide="pencil" class="size-4"></i></a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-red-500 hover:bg-red-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:text-red-500 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">7</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Sunday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">15 Sep</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Onam</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Restricted Holiday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                        <div class="flex gap-2">
-                                            <a href="#!" data-modal-target="addHolidayModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500"><i data-lucide="pencil" class="size-4"></i></a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-red-500 hover:bg-red-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:text-red-500 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">8</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Thursday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">31 Oct</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Halloween</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Observance</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                        <div class="flex gap-2">
-                                            <a href="#!" data-modal-target="addHolidayModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500"><i data-lucide="pencil" class="size-4"></i></a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-red-500 hover:bg-red-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:text-red-500 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">9</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Wednesday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">25 Dec</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Christmas</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Gazetted Holiday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                        <div class="flex gap-2">
-                                            <a href="#!" data-modal-target="addHolidayModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500"><i data-lucide="pencil" class="size-4"></i></a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-red-500 hover:bg-red-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:text-red-500 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">10</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Tuesday</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">31 Dec</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">New Year</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Observance</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                        <div class="flex gap-2">
-                                            <a href="#!" data-modal-target="addHolidayModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500"><i data-lucide="pencil" class="size-4"></i></a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-red-500 hover:bg-red-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:text-red-500 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="flex flex-col items-center mt-5 md:flex-row">
-                        <div class="mb-4 grow md:mb-0">
-                            <p class="text-slate-500 dark:text-zink-200">Showing <b>5</b> of <b>8</b> Results</p>
-                        </div>
-                        <ul class="flex flex-wrap items-center gap-2 shrink-0">
-                            <li>
-                                <a href="#!" class="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto"><i class="mr-1 size-4 rtl:rotate-180" data-lucide="chevron-left"></i> Prev</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="inline-flex items-center justify-center bg-white dark:bg-zink-700 size-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">1</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="inline-flex items-center justify-center bg-white dark:bg-zink-700 size-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto active">2</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="inline-flex items-center justify-center bg-white dark:bg-zink-700 size-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">3</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">Next <i class="ml-1 size-4 rtl:rotate-180" data-lucide="chevron-right"></i></a>
-                            </li>
-                        </ul>
-                    </div>
+                    <br>
+                    <table id="alternativePagination" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">No</th>
+                                <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Day</th>
+                                <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Date</th>
+                                <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Holiday Name</th>
+                                <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Type</th>
+                                <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">1</td>
+                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Monday</td>
+                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">15 Jan</td>
+                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Makara Sankranti</td>
+                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Gazetted Holiday</td>
+                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
+                                    <div class="flex gap-2">
+                                        <a href="#!" data-modal-target="addHolidayModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500"><i data-lucide="pencil" class="size-4"></i></a>
+                                        <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-red-500 hover:bg-red-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:text-red-500 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-
+            <!--end card-->
         </div>
-        <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
 
