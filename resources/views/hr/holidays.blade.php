@@ -22,10 +22,7 @@
                         <h6 class="text-15 grow">Holidays {{ date('Y') }}</h6>
                         <div class="shrink-0">
                             <button data-modal-target="addHolidayModal" type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" class="lucide lucide-plus inline-block size-4">
-                                    <path d="M5 12h14"></path>
-                                    <path d="M12 5v14"></path>
-                                </svg> 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" class="lucide lucide-plus inline-block size-4"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg> 
                                 <span class="align-middle">Add Holiday</span>
                             </button>
                         </div>
@@ -72,25 +69,41 @@
                 <button data-modal-close="addHolidayModal" class="transition-all duration-200 ease-linear text-slate-400 hover:text-red-500"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
             <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
-                <form action="#!">
+                <form action="{{ route('hr/holidays/save') }}" method="POST">
+                    @csrf
                     <div class="grid grid-cols-1 gap-4 xl:grid-cols-12">
                         <div class="xl:col-span-12">
                             <label for="typeSelect" class="inline-block mb-2 text-base font-medium">Type</label>
-                            <select name="holiday_type" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" data-choices="" data-choices-search-false="" name="typeSelect" id="typeSelect">
+                            <select name="holiday_type" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" data-choices="" data-choices-search-false="" id="typeSelect">
                                 <option value="">-- Select Holiday--</option>
-                                <option value="Restricted Holiday">Restricted Holiday</option>
-                                <option value="Gazetted Holiday">Gazetted Holiday</option>
-                                <option value="Observance">Observance</option>
-                                <option value="Season">Season</option>
+                                <option value="Restricted Holiday" {{ old('holiday_type') == 'Restricted Holiday' ? 'selected' : '' }}>Restricted Holiday</option>
+                                <option value="Gazetted Holiday" {{ old('holiday_type') == 'Gazetted Holiday' ? 'selected' : '' }}>Gazetted Holiday</option>
+                                <option value="Observance" {{ old('holiday_type') == 'Observance' ? 'selected' : '' }}>Observance</option>
+                                <option value="Season" {{ old('holiday_type') == 'Season' ? 'selected' : '' }}>Season</option>
                             </select>
+                            @error('holiday_type')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="xl:col-span-12">
                             <label for="holidayInput" class="inline-block mb-2 text-base font-medium">Holiday Name</label>
-                            <input type="text" name="holiday_name" id="holidayInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Holiday name">
+                            <input type="text" name="holiday_name" id="holidayInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('holiday_name') is-invalid @enderror " placeholder="Holiday name" value="{{ old('holiday_name') }}">
+                            @error('holiday_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="xl:col-span-12">
                             <label for="holidayDateInput" class="inline-block mb-2 text-base font-medium">Date</label>
-                            <input type="text" name="holiday_date" id="holidayDateInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Select date" data-provider="flatpickr" data-date-format="d M, Y">
+                            <input type="text" name="holiday_date" id="holidayDateInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('holiday_date') is-invalid @enderror " placeholder="Select date" data-provider="flatpickr" data-date-format="d M, Y" value="{{ old('holiday_date') }}">
+                            @error('holiday_date')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="flex justify-end gap-2 mt-4">

@@ -16,6 +16,20 @@
 	<link rel="stylesheet" href="{{ URL::to('assets/css/toastr.min.css') }}">
 	<script src="{{ URL::to('assets/js/toastr_jquery.min.js') }}"></script>
 	<script src="{{ URL::to('assets/js/toastr.min.js') }}"></script>
+    <style>
+        .invalid-feedback {
+            color: red;
+        }
+        .is-invalid {
+            border-color: red;
+        }
+        .choices {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 0px !important;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body class="text-base bg-body-bg text-body font-public dark:text-zink-100 dark:bg-zink-800 group-data-[skin=bordered]:bg-body-bordered group-data-[skin=bordered]:dark:bg-zink-700">
     <div class="group-data-[sidebar-size=sm]:min-h-sm group-data-[sidebar-size=sm]:relative">

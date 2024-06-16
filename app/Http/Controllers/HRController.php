@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use app\Models\User;
+use DB;
+use App\Models\User;
+use App\Models\Holiday;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class HRController extends Controller
 {
@@ -18,6 +21,32 @@ class HRController extends Controller
     public function holidayPage()
     {
         return view('HR.holidays');
+    }
+
+    /** save record holiday */
+    public function holidaySaveRecord(Request $request)
+    {
+        $request->validate([
+            'holiday_type' => 'required|string',
+            'holiday_name' => 'required|string',
+            'holiday_date' => 'required|string',
+        ]);
+
+        try {
+            $holiday = new Holiday;
+            $holiday->holiday_type  = $request->holiday_type;
+            $holiday->holiday_name  = $request->holiday_name;
+            $holiday->holiday_date  = $request->holiday_date;
+            $holiday->save();
+
+            Toastr::success('Create Holiday successfully :)','Success');
+            return redirect()->back();
+        } catch(\Exception $e) {
+            \Log::info($e);
+            DB::rollback();
+            Toastr::error('Add Holiday fail :)','Error');
+            return redirect()->back();
+        }
     }
 
     /** leave Employee */
