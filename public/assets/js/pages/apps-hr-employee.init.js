@@ -3,10 +3,9 @@
 Template Name: StarCode & Dashboard Template
 Author: StarCode Kh
 Website: https://StarCode Kh.in/
-Contact: StarCode Kh@gmail.com
+Contact: starcodekh@gmail.com
 File: apps hr employee init js
 */
-
 
 if (document.querySelector("#profile-img-file-input")) {
     document.querySelector("#profile-img-file-input").addEventListener("change", function () {
@@ -419,8 +418,6 @@ function refreshCallbacks() {
                 var selectedId = isId.body.querySelector("a").innerText.trim();
                 
                 if (selectedId == itemId) {
-
-
                     editList = true;
                     employeeId.value = selectedId;
                     employeeInput.value = Name
