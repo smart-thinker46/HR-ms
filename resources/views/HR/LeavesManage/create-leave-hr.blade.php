@@ -105,7 +105,7 @@
                 <div class="xl:col-span-3">
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="mb-4 text-15">Leave Information (2023)</h6>
+                            <h6 class="mb-4 text-15">Leave Information ({{ date('Y') }})</h6>
                             <div>
                                 <table class="w-full mb-0">
                                     <tbody>
