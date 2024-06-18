@@ -40,19 +40,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">1</td>
-                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Monday</td>
-                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">15 Jan</td>
-                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Makara Sankranti</td>
-                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Gazetted Holiday</td>
-                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                    <div class="flex gap-2 justify-center">
-                                        <a href="#!" data-modal-target="addHolidayModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500"><i data-lucide="pencil" class="size-4"></i></a>
-                                        <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-red-500 hover:bg-red-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:text-red-500 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach($holidayList as $key => $value)
+                                <tr>
+                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ ++ $key }}</td>
+                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ Carbon\Carbon::parse($value->holiday_date)->format('l') }}</td>
+                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ Carbon\Carbon::parse($value->holiday_date)->format('d M') }}</td>
+                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->holiday_name }}</td>
+                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->holiday_type }}</td>
+                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
+                                        <div class="flex gap-2 justify-center">
+                                            <a href="#!" data-modal-target="addHolidayModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500"><i data-lucide="pencil" class="size-4"></i></a>
+                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-red-500 hover:bg-red-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:text-red-500 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

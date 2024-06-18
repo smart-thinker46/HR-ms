@@ -20,7 +20,8 @@ class HRController extends Controller
     /** holiday Page */
     public function holidayPage()
     {
-        return view('HR.holidays');
+        $holidayList = Holiday::all();
+        return view('HR.holidays',compact('holidayList'));
     }
 
     /** save record holiday */
