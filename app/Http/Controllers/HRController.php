@@ -27,6 +27,7 @@ class HRController extends Controller
     /** save record holiday */
     public function holidaySaveRecord(Request $request)
     {
+        // In your controller or route handler
         $request->validate([
             'holiday_type' => 'required|string',
             'holiday_name' => 'required|string',

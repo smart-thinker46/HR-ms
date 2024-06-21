@@ -31,9 +31,11 @@
                     <table id="alternativePagination" class="display" style="width:100%">
                         <thead>
                             <tr>
+                                <th hidden>No</th>
                                 <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">No</th>
                                 <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Day</th>
                                 <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Date</th>
+                                <th hidden>Date</th>
                                 <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Holiday Name</th>
                                 <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Type</th>
                                 <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Action</th>
@@ -42,14 +44,16 @@
                         <tbody>
                             @foreach($holidayList as $key => $value)
                                 <tr>
+                                    <td id="idUpdate" hidden>{{ $value->id }}</td>
                                     <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ ++ $key }}</td>
                                     <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ Carbon\Carbon::parse($value->holiday_date)->format('l') }}</td>
+                                    <td id="holiday_date" hidden class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->holiday_date }}</td>
                                     <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ Carbon\Carbon::parse($value->holiday_date)->format('d M') }}</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->holiday_name }}</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->holiday_type }}</td>
+                                    <td id="holiday_name" class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->holiday_name }}</td>
+                                    <td id="holiday_type" class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->holiday_type }}</td>
                                     <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
                                         <div class="flex gap-2 justify-center">
-                                            <a href="#!" data-modal-target="addHolidayModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500"><i data-lucide="pencil" class="size-4"></i></a>
+                                            <a href="#!" data-modal-target="editHolidayModal" id="updateHoliday" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500"><i data-lucide="pencil" class="size-4"></i></a>
                                             <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-red-500 hover:bg-red-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:text-red-500 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
                                         </div>
                                     </td>
@@ -64,6 +68,7 @@
     </div>
     <!-- End Page-content -->
 
+    <!--add holiday-->
     <div id="addHolidayModal" modal-center="" class="fixed flex flex-col hidden transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show ">
         <div class="w-screen md:w-[30rem] bg-white shadow rounded-md dark:bg-zink-600">
             <div class="flex items-center justify-between p-4 border-b dark:border-zink-500">
@@ -117,7 +122,62 @@
         </div>
     </div>
     <!--end add holiday-->
+
+     <!--edit holiday-->
+    <div id="editHolidayModal" modal-center="" class="fixed flex flex-col hidden transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show ">
+        <div class="w-screen md:w-[30rem] bg-white shadow rounded-md dark:bg-zink-600">
+            <div class="flex items-center justify-between p-4 border-b dark:border-zink-500">
+                <h5 class="text-16">Edit Holiday</h5>
+                <button data-modal-close="editHolidayModal" class="transition-all duration-200 ease-linear text-slate-400 hover:text-red-500"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
+                <form>
+                    <input type="hidden" name="idUpdate" id="e_idUpdate" value="">
+                    <div class="grid grid-cols-1 gap-4 xl:grid-cols-12">
+                        <div class="xl:col-span-12">
+                            <label for="typeSelect" class="inline-block mb-2 text-base font-medium">Type</label>
+                            <select name="holiday_type" id="e_holiday_type" class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200">
+                                <option value="Restricted Holiday">Restricted Holiday</option>
+                                <option value="Gazetted Holiday">Gazetted Holiday</option>
+                                <option value="Observance">Observance</option>
+                                <option value="Season">Season</option>
+                            </select>
+                            @error('holiday_type')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="xl:col-span-12">
+                            <label for="holidayInput" class="inline-block mb-2 text-base font-medium">Holiday Name</label>
+                            <input type="text" name="holiday_name" id="e_holiday_name" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('holiday_name') is-invalid @enderror " placeholder="Holiday name" value="{{ old('holiday_name') }}">
+                            @error('holiday_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="xl:col-span-12">
+                            <label for="holiday_date" class="inline-block mb-2 text-base font-medium">Date</label>
+                            <input type="text" name="holiday_date" id="e_holiday_date" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('holiday_date') is-invalid @enderror " placeholder="Select date" data-provider="flatpickr" data-date-format="d M, Y" value="{{ old('holiday_date') }}">
+                            @error('holiday_date')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2 mt-4">
+                        <button type="reset" data-modal-close="editHolidayModal" class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100 focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-600 dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">Cancel</button>
+                        <button type="submit" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Update Holiday</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--end edit holiday-->
     
+    <!--delete modal-->
     <div id="deleteModal" modal-center="" class="fixed flex flex-col hidden transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
         <div class="w-screen md:w-[25rem] bg-white shadow rounded-md dark:bg-zink-600">
             <div class="max-h-[calc(theme('height.screen')_-_180px)] overflow-y-auto px-6 py-8">
@@ -141,6 +201,16 @@
     <!--end delete modal-->
 
 @section('script')
-    
+    {{-- update js --}}
+    <script>
+        $(document).on('click','#updateHoliday',function()
+        {
+            var _this = $(this).parents('tr');
+            $('#e_idUpdate').val(_this.find('#idUpdate').text());
+            $('#e_holiday_type').val(_this.find('#holiday_type').text()).change();
+            $('#e_holiday_name').val(_this.find('#holiday_name').text());
+            $('#e_holiday_date').val(_this.find('#holiday_date').text());
+        });
+    </script>
 @endsection
 @endsection

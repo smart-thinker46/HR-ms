@@ -101,7 +101,7 @@ File: Common Plugins Js File
                 choiceData.duplicateItemsAllowed = false;
             if (isChoicesVal["data-choices-text-disabled-true"])
                 choiceData.addItems = false;
-            choiceData.allowHTML = true;
+                choiceData.allowHTML = true;
             isChoicesVal["data-choices-text-disabled-true"] ? new Choices(item, choiceData).disable() : new Choices(item, choiceData);
         });
 
