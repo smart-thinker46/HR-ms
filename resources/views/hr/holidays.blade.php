@@ -131,7 +131,8 @@
                 <button data-modal-close="editHolidayModal" class="transition-all duration-200 ease-linear text-slate-400 hover:text-red-500"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
             <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
-                <form>
+                <form action="{{ route('hr/holidays/save') }}" method="POST">
+                    @csrf
                     <input type="hidden" name="idUpdate" id="e_idUpdate" value="">
                     <div class="grid grid-cols-1 gap-4 xl:grid-cols-12">
                         <div class="xl:col-span-12">

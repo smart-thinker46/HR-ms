@@ -35,7 +35,7 @@ class HRController extends Controller
         ]);
 
         try {
-            $holiday = new Holiday;
+            $holiday = Holiday::UpdateOrCreate(['id'=>$request->idUpdate]);
             $holiday->holiday_type  = $request->holiday_type;
             $holiday->holiday_name  = $request->holiday_name;
             $holiday->holiday_date  = $request->holiday_date;
