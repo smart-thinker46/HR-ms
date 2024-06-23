@@ -41,12 +41,30 @@ class HRController extends Controller
             $holiday->holiday_date  = $request->holiday_date;
             $holiday->save();
 
-            Toastr::success('Create Holiday successfully :)','Success');
+            Toastr::success('Create or Update Holiday successfully :)','Success');
             return redirect()->back();
         } catch(\Exception $e) {
             \Log::info($e);
             DB::rollback();
             Toastr::error('Add Holiday fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
+    /** delete record */
+    public function deleteRecord(Request $request) 
+    {
+        try {
+
+            $holidayDelete = Holiday::findOrFail($request->id_delete);
+            $holidayDelete->delete();
+
+            Toastr::success('Delete Holiday successfully :)','Success');
+            return redirect()->back();
+        } catch(\Exception $e) {
+            \Log::info($e);
+            DB::rollback();
+            Toastr::error('Delete Holiday fail :)','Error');
             return redirect()->back();
         }
     }
