@@ -59,7 +59,7 @@
                                 @endphp
                                 <tr class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                     <td>{{ ++$key }}</td>
-                                    <td>{{ $employee->user_id }}</td>
+                                    <td class="user_id">{{ $employee->user_id }}</td>
                                     <td class="px-3.5 py-2.5 first:pl-5 last:pr-5">
                                         <div class="flex items-center gap-2">
                                             <div class="flex items-center justify-center font-medium rounded-full size-10 shrink-0 bg-slate-200 text-slate-800 dark:text-zink-50 dark:bg-zink-600">
@@ -143,7 +143,7 @@
                         </div>
                         <div class="xl:col-span-12">
                             <label for="employeeId" class="inline-block mb-2 text-base font-medium">Employee ID</label>
-                            <input type="text" id="employeeId" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="" disabled="">
+                            <input type="text" id="employeeId" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="{{ $employeeId }}" disabled="">
                         </div>
                         <div class="xl:col-span-12">
                             <label for="employeeInput" class="inline-block mb-2 text-base font-medium">Name</label>
@@ -224,4 +224,11 @@
 @section('script')
 <script src="{{ URL::to('assets/js/pages/apps-hr-employee.init.js') }}"></script>
 @endsection
+<script>
+    $(document).on('click','#deleteHoliday',function()
+    {
+        var _this = $(this).parents('tr');
+        $('#e_idDelete').val(_this.find('#idUpdate').text());
+    });
+</script>
 @endsection

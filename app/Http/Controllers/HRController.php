@@ -15,7 +15,10 @@ class HRController extends Controller
     public function employeeList()
     {
         $employeeList = User::all();
-        return view('HR.employee',compact('employeeList'));
+        $id = User::first()->user_id;
+        $userId = (int)substr($id, 4) + 1;
+        $employeeId = 'KH_000'.$userId;
+        return view('HR.employee',compact('employeeList','employeeId'));
     }
 
     /** holiday Page */
