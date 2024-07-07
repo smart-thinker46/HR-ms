@@ -409,7 +409,7 @@
                         </div>
                         <div class="flex gap-3 p-2 mt-3 rounded-md bg-custom-500">
                             <div class="shrink-0">
-                                <img src="{{ URL::to('assets/images/support.png') }}" alt="" class="h-24">
+                                <img src="{{ URL::to('assets/images/profile.png') }}" alt="" class="h-24">
                             </div>
                             <div>
                                 <h6 class="mb-1 text-15 text-custom-50">Need Help ?</h6>
@@ -459,7 +459,7 @@
                                 <div class="border rounded-md border-slate-200 dark:border-zink-500">
                                     <div class="flex flex-wrap items-center gap-3 p-2">
                                         <div class="rounded-full size-10 shrink-0">
-                                            <img src="{{ URL::to('assets/images/user-1.jpg') }}" alt="" class="h-10 rounded-full">
+                                            <img src="{{ URL::to('assets/images/profile.png') }}" alt="" class="h-10 rounded-full">
                                         </div>
                                         <div class="grow">
                                             <h6 class="mb-1"><a href="#!">James Krogman</a></h6>
@@ -529,7 +529,7 @@
                                 <div class="border rounded-md border-slate-200 dark:border-zink-500">
                                     <div class="flex flex-wrap items-center gap-3 p-2">
                                         <div class="rounded-full size-10 shrink-0">
-                                            <img src="{{ URL::to('assets/images/user-3.jpg') }}" alt="" class="h-10 rounded-full">
+                                            <img src="{{ URL::to('assets/images/profile.png') }}" alt="" class="h-10 rounded-full">
                                         </div>
                                         <div class="grow">
                                             <h6 class="mb-1"><a href="#!">Denise Ledford</a></h6>
