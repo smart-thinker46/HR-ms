@@ -1,73 +1,73 @@
 @extends('layouts.master')
 @section('content')
     <!-- Page-content -->
-        <div class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
-            <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
-                <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
-                    <div class="grow">
-                        <h5 class="text-16">Departments List</h5>
-                    </div>
-                    <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
-                        <li class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
-                            <a href="#!" class="text-slate-400 dark:text-zink-200">HR Management</a>
-                        </li>
-                        <li class="text-slate-700 dark:text-zink-100">
-                            Departments List
-                        </li>
-                    </ul>
+    <div class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
+        <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
+            <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
+                <div class="grow">
+                    <h5 class="text-16">Departments List</h5>
                 </div>
-    
-                <div class="card">
-                    <div class="card-body">
-                        <div class="flex items-center">
-                            <h6 class="text-15 grow">Departments</h6>
-                            <div class="shrink-0">
-                                <button data-modal-target="addDepartmentModal" type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" class="lucide lucide-plus inline-block size-4">
-                                        <path d="M5 12h14"></path>
-                                        <path d="M12 5v14"></path>
-                                    </svg> 
-                                    <span class="align-middle">Add Departments</span>
-                                </button>
-                            </div>
+                <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
+                    <li class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
+                        <a href="#!" class="text-slate-400 dark:text-zink-200">HR Management</a>
+                    </li>
+                    <li class="text-slate-700 dark:text-zink-100">
+                        Departments List
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="flex items-center">
+                        <h6 class="text-15 grow">Departments</h6>
+                        <div class="shrink-0">
+                            <button data-modal-target="addDepartmentModal" type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" class="lucide lucide-plus inline-block size-4">
+                                    <path d="M5 12h14"></path>
+                                    <path d="M12 5v14"></path>
+                                </svg> 
+                                <span class="align-middle">Add Departments</span>
+                            </button>
                         </div>
-                        <br>
-                        <table id="alternativePagination" class="display" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">No</th>
-                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Department Name</th>
-                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Head of Dep.</th>
-                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Phone Number</th>
-                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Email</th>
-                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Employee</th>
-                                    <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">4</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">HR Management</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Thomas Hatfield</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">0911 47 65 49</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">thomas@starcode.com</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">03</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
-                                        <div class="flex gap-2">
-                                            <a href="#!" data-modal-target="addDepartmentModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/20"><i data-lucide="pencil" class="size-4"></i></a>
-                                            <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-red-500 dark:hover:text-red-500 hover:bg-red-100 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
+                    <br>
+                    <table id="alternativePagination" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">No</th>
+                                <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Department Name</th>
+                                <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Head of Dep.</th>
+                                <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Phone Number</th>
+                                <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Email</th>
+                                <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Employee</th>
+                                <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">4</td>
+                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">HR Management</td>
+                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Thomas Hatfield</td>
+                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">0911 47 65 49</td>
+                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">thomas@starcode.com</td>
+                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">03</td>
+                                <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
+                                    <div class="flex gap-2">
+                                        <a href="#!" data-modal-target="addDepartmentModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/20"><i data-lucide="pencil" class="size-4"></i></a>
+                                        <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-red-500 dark:hover:text-red-500 hover:bg-red-100 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <!--end card-->
             </div>
         </div>
+    </div>
     <!-- End Page-content -->
 
+    <!-- add department-->
     <div id="addDepartmentModal" modal-center="" class="fixed flex flex-col hidden transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show ">
         <div class="w-screen md:w-[30rem] bg-white shadow rounded-md dark:bg-zink-600">
             <div class="flex items-center justify-between p-4 border-b dark:border-zink-500">
@@ -75,27 +75,53 @@
                 <button data-modal-close="addDepartmentModal" class="transition-all duration-200 ease-linear text-slate-400 hover:text-red-500"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
             <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
-                <form action="#!">
+                <form action="{{ route('hr/department/save') }}" method="POST">
+                    @csrf
                     <div class="grid grid-cols-1 gap-4 xl:grid-cols-12">
                         <div class="xl:col-span-12">
                             <label for="departmentInput" class="inline-block mb-2 text-base font-medium">Department Name</label>
-                            <input type="text" id="departmentInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Department name">
+                            <input type="text" name="department" id="departmentInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('department') is-invalid @enderror" placeholder="Department name" value="{{ old('department') }}">
+                            @error('department')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="xl:col-span-12">
                             <label for="headOfInput" class="inline-block mb-2 text-base font-medium">Head of Dep. Name</label>
-                            <input type="text" id="headOfInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Head name">
+                            <input type="text" name="head_of" id="headOfInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('head_of') is-invalid @enderror" placeholder="Head name" value="{{ old('head_of') }}">
+                            @error('head_of')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="xl:col-span-12">
                             <label for="phoneNumberInput" class="inline-block mb-2 text-base font-medium">Phone Number</label>
-                            <input type="number" id="phoneNumberInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="(012) 1234 562 3145">
+                            <input type="number" name="phone_number" id="phoneNumberInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('phone_number') is-invalid @enderror" placeholder="(012) 1234 562 3145" value="{{ old('phone_number') }}">
+                            @error('phone_number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="xl:col-span-12">
                             <label for="emailInput" class="inline-block mb-2 text-base font-medium">Email</label>
-                            <input type="text" id="emailInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Enter email">
+                            <input type="text" name="email" id="emailInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('email') is-invalid @enderror" placeholder="Enter email" value="{{ old('email') }}">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="xl:col-span-12">
                             <label for="employeeNumberInput" class="inline-block mb-2 text-base font-medium">Total Employee</label>
-                            <input type="number" id="employeeNumberInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="0">
+                            <input type="number" name="total_employee" id="employeeNumberInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('total_employee') is-invalid @enderror" placeholder="0" value="{{ old('total_employee') }}">
+                            @error('total_employee')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="flex justify-end gap-2 mt-4">
@@ -108,6 +134,7 @@
     </div>
     <!--end add holiday-->
     
+    <!-- delete modal-->
     <div id="deleteModal" modal-center="" class="fixed flex flex-col hidden transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
         <div class="w-screen md:w-[25rem] bg-white shadow rounded-md dark:bg-zink-600">
             <div class="max-h-[calc(theme('height.screen')_-_180px)] overflow-y-auto px-6 py-8">

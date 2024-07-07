@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\Models\User;
 use App\Models\Holiday;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 
@@ -108,6 +109,37 @@ class HRController extends Controller
     public function department()
     {
         return view('HR.department');
+    }
+
+    /** save record department */
+    public function saveRecordDepartment(Request $request)
+    {
+        // In your controller or route handler
+        $request->validate([
+            'department'   => 'required|string',
+            'head_of'      => 'required|string',
+            'phone_number' => 'required|integer',
+            'email'        => 'required|email',
+            'total_employee' => 'required|integer',
+        ]);
+
+        try {
+            $department = Department::UpdateOrCreate(['id'=>$request->idUpdate]);
+            $department->department      = $request->department;
+            $department->head_of         = $request->head_of;
+            $department->phone_number    = $request->phone_number;
+            $department->email           = $request->email;
+            $department->total_employee  = $request->total_employee;
+            $department->save();
+
+            Toastr::success('Create or Update Department successfully :)','Success');
+            return redirect()->back();
+        } catch(\Exception $e) {
+            \Log::info($e);
+            DB::rollback();
+            Toastr::error('Add Department fail :)','Error');
+            return redirect()->back();
+        }
     }
 
 }
