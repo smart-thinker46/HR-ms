@@ -111,7 +111,8 @@ class HRController extends Controller
     /** department */
     public function department()
     {
-        return view('HR.department');
+        $departmentList = Department::all();
+        return view('HR.department',compact('departmentList'));
     }
 
     /** save record department */
