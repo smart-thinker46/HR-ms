@@ -36,6 +36,7 @@
                         <thead>
                             <tr>
                                 <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">No</th>
+                                <th hidden>ID</th>
                                 <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Department Name</th>
                                 <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Head of Dep.</th>
                                 <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Phone Number</th>
@@ -48,14 +49,15 @@
                             @foreach($departmentList as $key => $value)
                                 <tr>
                                     <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ ++$key }}</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->department }}</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->head_of }}</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->phone_number }}</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->email }}</td>
-                                    <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->total_employee }}</td>
+                                    <td class="id_update" hidden>{{ $value->id }}</td>
+                                    <td id="department" class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->department }}</td>
+                                    <td id="head_of" class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->head_of }}</td>
+                                    <td id="phone_number" class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->phone_number }}</td>
+                                    <td id="email" class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->email }}</td>
+                                    <td id="total_employee" class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ $value->total_employee }}</td>
                                     <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
                                         <div class="flex gap-2">
-                                            <a href="#!" data-modal-target="addDepartmentModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/20"><i data-lucide="pencil" class="size-4"></i></a>
+                                            <a href="#!" data-modal-target="editDepartmentModal" id="updateRecord" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/20"><i data-lucide="pencil" class="size-4"></i></a>
                                             <a href="#!" data-modal-target="deleteModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-red-500 dark:hover:text-red-500 hover:bg-red-100 dark:hover:bg-red-500/20"><i data-lucide="trash-2" class="size-4"></i></a>
                                         </div>
                                     </td>
@@ -135,6 +137,74 @@
         </div>
     </div>
     <!--end add holiday-->
+
+    <!-- edit department-->
+    <div id="editDepartmentModal" modal-center="" class="fixed flex flex-col hidden transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show ">
+        <div class="w-screen md:w-[30rem] bg-white shadow rounded-md dark:bg-zink-600">
+            <div class="flex items-center justify-between p-4 border-b dark:border-zink-500">
+                <h5 class="text-16">Add Department</h5>
+                <button data-modal-close="editDepartmentModal" class="transition-all duration-200 ease-linear text-slate-400 hover:text-red-500"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
+                <form action="{{ route('hr/department/save') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="id_update" id="e_id_update" value=""/>
+                    <div class="grid grid-cols-1 gap-4 xl:grid-cols-12">
+                        <div class="xl:col-span-12">
+                            <label for="departmentInput" class="inline-block mb-2 text-base font-medium">Department Name</label>
+                            <input type="text" name="department" id="e_department" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('department') is-invalid @enderror" placeholder="Department name" value="{{ old('department') }}">
+                            @error('department')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="xl:col-span-12">
+                            <label for="headOfInput" class="inline-block mb-2 text-base font-medium">Head of Dep. Name</label>
+                            <input type="text" name="head_of" id="e_head_of" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('head_of') is-invalid @enderror" placeholder="Head name" value="{{ old('head_of') }}">
+                            @error('head_of')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="xl:col-span-12">
+                            <label for="phoneNumberInput" class="inline-block mb-2 text-base font-medium">Phone Number</label>
+                            <input type="number" name="phone_number" id="e_phone_number" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('phone_number') is-invalid @enderror" placeholder="(012) 1234 562 3145" value="{{ old('phone_number') }}">
+                            @error('phone_number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="xl:col-span-12">
+                            <label for="emailInput" class="inline-block mb-2 text-base font-medium">Email</label>
+                            <input type="text" name="email" id="e_email" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('email') is-invalid @enderror" placeholder="Enter email" value="{{ old('email') }}">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="xl:col-span-12">
+                            <label for="employeeNumberInput" class="inline-block mb-2 text-base font-medium">Total Employee</label>
+                            <input type="number" name="total_employee" id="e_total_employee" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('total_employee') is-invalid @enderror" placeholder="0" value="{{ old('total_employee') }}">
+                            @error('total_employee')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2 mt-4">
+                        <button type="reset" data-modal-close="editDepartmentModal" class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100 focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-600 dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">Cancel</button>
+                        <button type="submit" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Add Department</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--end edit holiday-->
     
     <!-- delete modal-->
     <div id="deleteModal" modal-center="" class="fixed flex flex-col hidden transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
@@ -158,6 +228,18 @@
     <!--end delete modal-->
 
 @section('script')
-
+    {{-- update js --}}
+    <script>
+        $(document).on('click','#updateRecord',function()
+        {
+            var _this = $(this).parents('tr');
+            $('#e_id_update').val(_this.find('.id_update').text());
+            $('#e_department').val(_this.find('#department').text());
+            $('#e_head_of').val(_this.find('#head_of').text());
+            $('#e_phone_number').val(_this.find('#phone_number').text());
+            $('#e_email').val(_this.find('#email').text());
+            $('#e_total_employee').val(_this.find('#total_employee').text());
+        });
+    </script>
 @endsection
 @endsection

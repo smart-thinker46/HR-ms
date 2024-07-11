@@ -128,7 +128,7 @@ class HRController extends Controller
         ]);
 
         try {
-            $department = Department::UpdateOrCreate(['id'=>$request->idUpdate]);
+            $department = Department::UpdateOrCreate(['id'=>$request->id_update]);
             $department->department      = $request->department;
             $department->head_of         = $request->head_of;
             $department->phone_number    = $request->phone_number;
