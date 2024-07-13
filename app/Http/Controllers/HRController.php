@@ -146,4 +146,22 @@ class HRController extends Controller
         }
     }
 
+    /** delete record department */
+    public function deleteRecordDepartment(Request $request)
+    {
+        try {
+
+            $delete = Department::findOrFail($request->id_delete);
+            $delete->delete();
+
+            Toastr::success('Delete record successfully :)','Success');
+            return redirect()->back();
+        } catch(\Exception $e) {
+            \Log::info($e);
+            DB::rollback();
+            Toastr::error('Delete record fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
 }
