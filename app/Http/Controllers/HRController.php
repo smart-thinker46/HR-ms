@@ -56,7 +56,7 @@ class HRController extends Controller
     }
 
     /** delete record */
-    public function deleteRecord(Request $request) 
+    public function holidayDeleteRecord(Request $request) 
     {
         try {
 
