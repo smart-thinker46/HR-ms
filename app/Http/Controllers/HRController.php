@@ -21,6 +21,22 @@ class HRController extends Controller
         return view('HR.employee',compact('employeeList','employeeId'));
     }
 
+    /** save record employee */
+    public function employeeSaveRecord(Request $request)
+    {
+        // In your controller or route handler
+        $request->validate([
+            'photo'        => 'required|image|',
+            'name'         => 'required|string',
+            'email'        => 'required|string|email|max:255|unique:users',
+            'phone_number' => 'required|numeric',
+            'location'     => 'required|string',
+            'join_date'    => 'required|string',
+            'experience'   => 'required|string',
+            'designation'  => 'required|string',
+        ]);
+    }
+
     /** holiday Page */
     public function holidayPage()
     {

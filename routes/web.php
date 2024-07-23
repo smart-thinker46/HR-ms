@@ -79,6 +79,7 @@ Route::group(['namespace' => 'App\Http\Controllers'],function()
     // -------------------------- hr ----------------------//
     Route::controller(HRController::class)->group(function () {
         Route::get('hr/employee/list', 'employeeList')->middleware('auth')->name('hr/employee/list');
+        Route::post('hr/employee/save', 'employeeSaveRecord')->middleware('auth')->name('hr/employee/save'); // save employee record
         Route::get('hr/holidays/page', 'holidayPage')->middleware('auth')->name('hr/holidays/page');
         Route::post('hr/holidays/save', 'holidaySaveRecord')->middleware('auth')->name('hr/holidays/save'); // save or update record
         Route::post('hr/holidays/delete', 'holidayDeleteRecord')->middleware('auth')->name('hr/holidays/delete'); // delete record
