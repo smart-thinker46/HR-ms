@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Hash;
 use App\Models\User;
 use App\Models\Holiday;
 use App\Models\Department;
@@ -15,7 +16,7 @@ class HRController extends Controller
     public function employeeList()
     {
         $employeeList = User::all();
-        $id = User::first()->user_id;
+        $id = User::orderBy('id', 'DESC')->first()->user_id;
         $userId = (int)substr($id, 4) + 1;
         $employeeId = 'KH_000'.$userId;
         return view('HR.employee',compact('employeeList','employeeId'));
@@ -35,6 +36,34 @@ class HRController extends Controller
             'experience'   => 'required|string',
             'designation'  => 'required|string',
         ]);
+
+        try {
+
+            $photo = time().'.'.$request->photo->extension();  
+            $request->photo->move(public_path('assets/images'), $photo);
+
+            $register               = new User;
+            $register->name         = $request->name;
+            $register->email        = $request->email;
+            $register->phone_number = $request->phone_number;
+            $register->location     = $request->location;
+            $register->join_date    = $request->join_date;
+            $register->experience   = $request->experience;
+            $register->designation  = $request->designation;
+            $register->role_name    = 'User Normal';
+            $register->status       = 'Active';
+            $register->avatar       = $photo;
+            $register->password     = Hash::make('Hello@123');
+            $register->save();
+
+            Toastr::success('Add new employee successfully :)','Success');
+            return redirect()->back();
+        } catch(\Exception $e) {
+            \Log::info($e);
+            DB::rollback();
+            Toastr::error('Add new employee fail :)','Error');
+            return redirect()->back();
+        }
     }
 
     /** holiday Page */

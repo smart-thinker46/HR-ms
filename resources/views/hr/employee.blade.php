@@ -64,7 +64,7 @@
                                         <div class="flex items-center gap-2">
                                             <div class="flex items-center justify-center font-medium rounded-full size-10 shrink-0 bg-slate-200 text-slate-800 dark:text-zink-50 dark:bg-zink-600">
                                                 @if(!empty($employee->avatar))
-                                                    <img src="{{ URL::to('assets/images/profile.png') }}" alt="" class="h-10 rounded-full">
+                                                    <img src="{{ URL::to('assets/images/'.$employee->avatar) }}" alt="" class="h-10 rounded-full">
                                                 @else  
                                                 <div class="flex items-center justify-center font-medium rounded-full size-10 shrink-0 bg-slate-200 text-slate-800 dark:text-zink-50 dark:bg-zink-600">
                                                    {{ $initials }}
