@@ -73,7 +73,7 @@
                         <h6 class="text-15 grow">Leave</h6>
                         <div class="xl:col-span-2 xl:col-start-11">
                             <div class="ltr:lg:text-right rtl:lg:text-left">
-                                <a href="{{ route('hr/create/leave/hr/page') }}" type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                <a href="{{ route('hr/create/leave/employee/page') }}" type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
                                     <i data-lucide="plus" class="inline-block size-4"></i> 
                                     <span class="align-middle">Add Leave</span>
                                 </a>
