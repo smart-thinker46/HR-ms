@@ -39,8 +39,8 @@ class HRController extends Controller
 
         try {
 
-            $photo = time().'.'.$request->photo->extension();  
-            $request->photo->move(public_path('assets/images'), $photo);
+            $photo = $request->name.'.'.$request->photo->extension();  
+            $request->photo->move(public_path('assets/images/user'), $photo);
 
             $register               = new User;
             $register->name         = $request->name;
