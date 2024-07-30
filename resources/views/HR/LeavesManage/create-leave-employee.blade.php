@@ -51,12 +51,12 @@
                                     <div class="xl:col-span-6">
                                         <div>
                                             <label for="numberOfDayLeaves" class="inline-block mb-2 text-base font-medium">Number of Days</label>
-                                            <input type="text" name="number_of_days" id="numberOfDayLeaves" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="01" disabled="">
+                                            <input type="text" name="number_of_day" id="numberOfDayLeaves" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="01" disabled="">
                                         </div>
                                     </div>
                                     <div class="xl:col-span-6">
                                         <label for="leaveDayInput" class="inline-block mb-2 text-base font-medium">Leave Day</label>
-                                        <select class="form-input border-slate-200 focus:outline-none focus:border-custom-500" data-choices="" data-choices-search-false="" name="leaveDayInput" id="leaveDayInput">
+                                        <select name="leave_day" class="form-input border-slate-200 focus:outline-none focus:border-custom-500" data-choices="" data-choices-search-false="" name="leaveDayInput" id="leaveDayInput">
                                             <option value="">Select Leave Day</option>
                                             <option value="Full-Day Leave">Full-Day Leave</option>
                                             <option value="Half Day Morning Leave">Half Day Morning Leave</option>
@@ -68,7 +68,7 @@
                                     <div class="md:col-span-2 xl:col-span-12">
                                         <div>
                                             <label for="reasonInput" class="inline-block mb-2 text-base font-medium">Reason</label>
-                                            <textarea class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" id="reasonInput" rows="3"></textarea>
+                                            <textarea name="reason" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" id="reasonInput" rows="3"></textarea>
                                         </div>
                                     </div>
                                 </div>
