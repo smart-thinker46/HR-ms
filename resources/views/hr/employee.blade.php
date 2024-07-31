@@ -36,6 +36,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Employee ID</th>
+                                <th hidden>Photo</th>
                                 <th class="ltr:!text-left rtl:!text-right">Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
@@ -60,6 +61,7 @@
                                 <tr class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                     <td>{{ ++$key }}</td>
                                     <td class="user_id">{{ $employee->user_id }}</td>
+                                    <td hidden class="photo">{{ $employee->avatar }}</td>
                                     <td class="px-3.5 py-2.5 first:pl-5 last:pr-5">
                                         <div class="flex items-center gap-2">
                                             <div class="flex items-center justify-center font-medium rounded-full size-10 shrink-0 bg-slate-200 text-slate-800 dark:text-zink-50 dark:bg-zink-600">
@@ -247,7 +249,7 @@
                     <div class="grid grid-cols-1 gap-4 xl:grid-cols-12">
                         <div class="xl:col-span-12">
                             <div class="relative mx-auto mb-4 rounded-full shadow-md size-24 bg-slate-100 profile-user dark:bg-zink-500">
-                                <img id="" src="{{ URL::to('assets/images/user.png') }}" alt="" class="object-cover w-full h-full rounded-full edit-user-profile-image">
+                                <img id="e_photo_edit" src="{{ URL::to('assets/images/user.png') }}" alt="" class="object-cover w-full h-full rounded-full edit-user-profile-image">
                                 <div class="absolute bottom-0 flex items-center justify-center rounded-full size-8 ltr:right-0 rtl:left-0 profile-photo-edit">
                                     <input id="edit-profile-img-file-input" name="photo" type="file" class="hidden edit-profile-img-file-input">
                                     <label for="edit-profile-img-file-input" class="flex items-center justify-center bg-white rounded-full shadow-lg cursor-pointer size-8 dark:bg-zink-600 profile-photo-edit">
@@ -263,11 +265,11 @@
                         </div>
                         <div class="xl:col-span-12">
                             <label for="employeeId" class="inline-block mb-2 text-base font-medium">Employee ID</label>
-                            <input type="text" id="e_employeeId" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" disabled="">
+                            <input type="text" id="e_employee_id" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" disabled="">
                         </div>
                         <div class="xl:col-span-12">
                             <label for="employeeInput" class="inline-block mb-2 text-base font-medium">Name</label>
-                            <input type="text" name="name" id="employeeInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('name') is-invalid @enderror " placeholder="Employee name" value="{{ old('name') }}">
+                            <input type="text" name="name" id="e_name" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('name') is-invalid @enderror " placeholder="Employee name" value="{{ old('name') }}">
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -380,6 +382,25 @@
 @section('script')
 @endsection
 
+{{-- update js --}}
+<script>
+    $(document).on('click','#editEmployee',function()
+    {
+        var _this = $(this).parents('tr');
+        var photo = _this.find('.photo').text();
+        if (!photo) {
+            var photos = "{{asset('assets/images/user.png')}}" // empty photo
+        } else {
+            var photos = "{{asset('assets/images/user/')}}"+'/'+photo // !empty photo
+        }
+
+        $('#e_photo_edit').attr("src",photos);
+        $('#e_employee_id').val(_this.find('.user_id').text());
+        $('#e_name').val(_this.find('.name').text());
+
+    });
+</script>
+
 <script>
     //for add profile
     if (document.querySelector("#profile-img-file-input")) {
@@ -418,4 +439,5 @@
         });
     }
 </script>
+
 @endsection
