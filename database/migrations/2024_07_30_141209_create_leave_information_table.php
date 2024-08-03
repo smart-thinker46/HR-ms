@@ -13,18 +13,19 @@ return new class extends Migration
     {
         Schema::create('leave_information', function (Blueprint $table) {
             $table->id();
+            $table->string('leave_type')->nullable();
+            $table->string('leave_days')->nullable();
             $table->string('year_leave')->nullable();
-            $table->string('medical_leave')->nullable();
-            $table->string('casual_leave')->nullable();
-            $table->string('sick_leave')->nullable();
-            $table->string('annual_leave')->nullable();
-            $table->string('use_leave')->nullable();
-            $table->string('remaining_leave')->nullable();
             $table->timestamps();
         });
 
         DB::table('leave_information')->insert([
-            ['year_leave'=> date('Y'),'medical_leave' => '04','casual_leave' => '08','sick_leave' => '05','annual_leave' => '12','use_leave' => '09','remaining_leave' => '18'],
+            ['leave_type' => 'Medical Leave'  ,'leave_days' => '04','year_leave' => date('Y')],
+            ['leave_type' => 'Casual Leave'   ,'leave_days' => '08','year_leave' => date('Y')],
+            ['leave_type' => 'Sick Leave'     ,'leave_days' => '05','year_leave' => date('Y')],
+            ['leave_type' => 'Annual Leave'   ,'leave_days' => '12','year_leave' => date('Y')],
+            ['leave_type' => 'Use Leave'      ,'leave_days' => '09','year_leave' => date('Y')],
+            ['leave_type' => 'Remaining Leave','leave_days' => '18','year_leave' => date('Y')],
         ]);
     }
 
