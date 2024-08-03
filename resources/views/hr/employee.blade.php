@@ -37,12 +37,16 @@
                                 <th>No</th>
                                 <th>Employee ID</th>
                                 <th hidden>Photo</th>
+                                <th hidden>Location</th>
+                                <th hidden>Join Date</th>
                                 <th class="ltr:!text-left rtl:!text-right">Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
+                                <th>Experience</th>
                                 <th>Join Date</th>
                                 <th>Last Login</th>
                                 <th>Role</th>
+                                <th>Designation</th>
                                 <th>Departement</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -62,6 +66,8 @@
                                     <td>{{ ++$key }}</td>
                                     <td class="user_id">{{ $employee->user_id }}</td>
                                     <td hidden class="photo">{{ $employee->avatar }}</td>
+                                    <td hidden class="location">{{ $employee->location }}</td>
+                                    <td hidden class="join_date">{{ $employee->join_date }}</td>
                                     <td class="px-3.5 py-2.5 first:pl-5 last:pr-5">
                                         <div class="flex items-center gap-2">
                                             <div class="flex items-center justify-center font-medium rounded-full size-10 shrink-0 bg-slate-200 text-slate-800 dark:text-zink-50 dark:bg-zink-600">
@@ -75,16 +81,18 @@
                                             </div>
                                             <div class="grow">
                                                 <h6 class="mb-1"><a href="#!" class="name">{{ $employee->name }}</a></h6>
-                                                <p class="text-slate-500 dark:text-zink-200">{{ $employee->position }}</p>
+                                                <p class="text-slate-500 dark:text-zink-200 position">{{ $employee->position }}</p>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{{ $employee->email }}</td>
-                                    <td>{{ $employee->phone_number }}</td>
+                                    <td class="email">{{ $employee->email }}</td>
+                                    <td class="phone_number">{{ $employee->phone_number }}</td>
+                                    <td class="experience">{{ $employee->experience }}</td>
                                     <td>{{ \Carbon\Carbon::parse($employee->join_date)->diffForHumans(); }}</td>
                                     <td>{{ \Carbon\Carbon::parse($employee->last_login)->diffForHumans(); }}</td>
                                     <td>{{ $employee->role_name }}</td>
-                                    <td>{{ $employee->department }}</td>
+                                    <td class="designation">{{ $employee->designation }}</td>
+                                    <td class="department">{{ $employee->department }}</td>
                                     <td class="px-3.5 py-2.5 first:pl-5 last:pr-5">
                                         <span class="px-2.5 py-0.5 text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent inline-flex items-center status">
                                             <i data-lucide="check-circle" class="size-3 mr-1.5"></i> 
@@ -203,15 +211,9 @@
                             <label for="designationSelect" class="inline-block mb-2 text-base font-medium">Designation</label>
                             <select name="designation" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" data-choices="" data-choices-search-false="" id="typeSelect">
                                 <option value="">-- Select Designation --</option>
-                                <option value="Angular Developer">Angular Developer</option>
-                                <option value="React Developer">React Developer</option>
-                                <option value="Project Manager">Project Manager</option>
-                                <option value="Web Designer">Web Designer</option>
-                                <option value="Team Leader">Team Leader</option>
-                                <option value="VueJs Developer">VueJs Developer</option>
-                                <option value="NodeJS Developer">NodeJS Developer</option>
-                                <option value="ASP.Net Developer">ASP.Net Developer</option>
-                                <option value="UI / UX Designer">UI / UX Designer</option>
+                                @foreach($position as $key => $value)
+                                <option value="{{ $value->position }}">{{ $value->position }}</option>
+                                @endforeach
                             </select>
                             @error('designation')
                                 <span class="invalid-feedback" role="alert">
@@ -278,8 +280,26 @@
                         </div>
                         <div class="xl:col-span-12">
                             <label for="emailInput" class="inline-block mb-2 text-base font-medium">Email</label>
-                            <input type="text" name="email" id="emailInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('email') is-invalid @enderror " placeholder="example@starcode.com" value="{{ old('email') }}">
+                            <input type="text" name="email" id="e_email" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('email') is-invalid @enderror " placeholder="example@starcode.com" value="{{ old('email') }}">
                             @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="xl:col-span-12">
+                            <label for="positionInput" class="inline-block mb-2 text-base font-medium">Position</label>
+                            <input type="text" name="position" id="e_position" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('email') is-invalid @enderror " placeholder="Enter position" value="{{ old('position') }}">
+                            @error('position')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="xl:col-span-12">
+                            <label for="positionInput" class="inline-block mb-2 text-base font-medium">Department</label>
+                            <input type="text" name="department" id="e_department" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('email') is-invalid @enderror " placeholder="Enter department" value="{{ old('department') }}">
+                            @error('department')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -287,7 +307,7 @@
                         </div>
                         <div class="xl:col-span-6">
                             <label for="phoneNumberInput" class="inline-block mb-2 text-base font-medium">Phone Number</label>
-                            <input type="tel" name="phone_number" id="phoneNumberInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('phone_number') is-invalid @enderror " placeholder="Enter phone number" value="{{ old('phone_number') }}">
+                            <input type="tel" name="phone_number" id="e_phone_number" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('phone_number') is-invalid @enderror " placeholder="Enter phone number" value="{{ old('phone_number') }}">
                             @error('phone_number')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -296,7 +316,7 @@
                         </div>
                         <div class="xl:col-span-6">
                             <label for="locationInput" class="inline-block mb-2 text-base font-medium">Location</label>
-                            <input type="text" name="location" id="locationInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200  @error('location') is-invalid @enderror " placeholder="Enter location" value="{{ old('location') }}">
+                            <input type="text" name="location" id="e_location" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200  @error('location') is-invalid @enderror " placeholder="Enter location" value="{{ old('location') }}">
                             @error('location')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -305,7 +325,7 @@
                         </div>
                         <div class="xl:col-span-6">
                             <label for="joiningDateInput" class="inline-block mb-2 text-base font-medium">Joining Date</label>
-                            <input type="text" name="join_date" id="joiningDateInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('join_date') is-invalid @enderror " placeholder="Select date" data-provider="flatpickr" data-date-format="d M, Y" value="{{ old('join_date') }}">
+                            <input type="text" name="join_date" id="e_join_date" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('join_date') is-invalid @enderror " placeholder="Select date" data-provider="flatpickr" data-date-format="d M, Y" value="{{ old('join_date') }}">
                             @error('join_date')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -314,7 +334,7 @@
                         </div>
                         <div class="xl:col-span-6">
                             <label for="experienceInput" class="inline-block mb-2 text-base font-medium">Experience</label>
-                            <input type="number" name="experience" id="experienceInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('experience') is-invalid @enderror " placeholder="0.0" value="{{ old('experience') }}">
+                            <input type="number" name="experience" id="e_experience" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('experience') is-invalid @enderror " placeholder="0.0" value="{{ old('experience') }}">
                             @error('experience')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -323,17 +343,11 @@
                         </div>
                         <div class="xl:col-span-12">
                             <label for="designationSelect" class="inline-block mb-2 text-base font-medium">Designation</label>
-                            <select name="designation" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" data-choices="" data-choices-search-false="" id="typeSelect">
+                            <select name="designation" id="e_designation" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" data-choices-search-false="" id="typeSelect">
                                 <option value="">-- Select Designation --</option>
-                                <option value="Angular Developer">Angular Developer</option>
-                                <option value="React Developer">React Developer</option>
-                                <option value="Project Manager">Project Manager</option>
-                                <option value="Web Designer">Web Designer</option>
-                                <option value="Team Leader">Team Leader</option>
-                                <option value="VueJs Developer">VueJs Developer</option>
-                                <option value="NodeJS Developer">NodeJS Developer</option>
-                                <option value="ASP.Net Developer">ASP.Net Developer</option>
-                                <option value="UI / UX Designer">UI / UX Designer</option>
+                                @foreach($position as $key => $value)
+                                <option value="{{ $value->position }}">{{ $value->position }}</option>
+                                @endforeach
                             </select>
                             @error('designation')
                                 <span class="invalid-feedback" role="alert">
@@ -397,6 +411,14 @@
         $('#e_photo_edit').attr("src",photos);
         $('#e_employee_id').val(_this.find('.user_id').text());
         $('#e_name').val(_this.find('.name').text());
+        $('#e_email').val(_this.find('.email').text());
+        $('#e_position').val(_this.find('.position').text());
+        $('#e_phone_number').val(_this.find('.phone_number').text());
+        $('#e_location').val(_this.find('.location').text());
+        $('#e_join_date').val(_this.find('.join_date').text());
+        $('#e_experience').val(_this.find('.experience').text());
+        $('#e_department').val(_this.find('.department').text());
+        $('#e_designation').val(_this.find('.designation').text());
 
     });
 </script>

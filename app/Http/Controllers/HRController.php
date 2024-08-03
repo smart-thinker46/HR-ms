@@ -19,7 +19,11 @@ class HRController extends Controller
         $id = User::orderBy('id', 'DESC')->first()->user_id;
         $userId = (int)substr($id, 4) + 1;
         $employeeId = 'KH_000'.$userId;
-        return view('HR.employee',compact('employeeList','employeeId'));
+        $roleName   = DB::table('role_type_users')->get();
+        $position   = DB::table('position_types')->get();
+        $department = DB::table('departments')->get();
+        $statusUser = DB::table('user_types')->get();
+        return view('HR.employee',compact('employeeList','employeeId','roleName','position','department','statusUser'));
     }
 
     /** save record employee */
