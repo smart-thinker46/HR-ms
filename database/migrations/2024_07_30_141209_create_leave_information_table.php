@@ -22,6 +22,10 @@ return new class extends Migration
             $table->string('remaining_leave')->nullable();
             $table->timestamps();
         });
+
+        DB::table('leave_information')->insert([
+            ['year_leave'=> date('Y'),'medical_leave' => '04','casual_leave' => '08','sick_leave' => '05','annual_leave' => '12','use_leave' => '09','remaining_leave' => '18'],
+        ]);
     }
 
     /**
