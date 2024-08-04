@@ -58,13 +58,15 @@
                                                 <option value="Annual Leave">Annual Leave</option>
                                             </select>
                                         </div>
-                                    </div><!--end col-->
+                                    </div>
+                                    <!--end col-->
                                     <div class="xl:col-span-6">
                                         <div>
                                             <label for="remainingLeaves" class="inline-block mb-2 text-base font-medium">Remaining Leaves</label>
                                             <input type="text" id="remainingLeaves" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="18" disabled="">
                                         </div>
-                                    </div><!--end col-->
+                                    </div>
+                                    <!--end col-->
                                     <div class="xl:col-span-6">
                                         <label for="fromInput" class="inline-block mb-2 text-base font-medium">Form</label>
                                         <input type="text" id="fromInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Select date" data-provider="flatpickr" data-date-format="d M, Y">
@@ -93,7 +95,8 @@
                                             <textarea class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" id="reasonInput" rows="3"></textarea>
                                         </div>
                                     </div>
-                                </div><!--end grid-->
+                                </div>
+                                <!--end grid-->
                                 <div class="flex justify-end gap-2 mt-4">
                                     <button type="reset" class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100 focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-700 dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">Reset</button>
                                     <button type="submit" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Add Leave</button>
@@ -101,7 +104,8 @@
                             </form>
                         </div>
                     </div>
-                </div><!--end col-->
+                </div>
+                <!--end col-->
                 <div class="xl:col-span-3">
                     <div class="card">
                         <div class="card-body">
@@ -109,37 +113,19 @@
                             <div>
                                 <table class="w-full mb-0">
                                     <tbody>
-                                        <tr>
-                                            <td class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">Medical Leave</td>
-                                            <th class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">04</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">Casual Leave</td>
-                                            <th class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">08</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">Sick Leave</td>
-                                            <th class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">03</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">Annual Leave</td>
-                                            <th class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">12</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">Use Leave</td>
-                                            <th class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">09</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">Remaining Leave</td>
-                                            <th class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">18</th>
-                                        </tr>
+                                        @foreach($leaveInformation as $key => $value)
+                                            <tr>
+                                                <td class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">{{ $value->leave_type }}</td>
+                                                <th class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">{{ $value->leave_days }}</th>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                </div><!--end col-->
-            </div><!--end grid-->
+                </div>
+            </div>
 
         </div>
         <!-- container-fluid -->

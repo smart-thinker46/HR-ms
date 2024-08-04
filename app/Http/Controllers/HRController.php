@@ -7,6 +7,7 @@ use Hash;
 use App\Models\User;
 use App\Models\Holiday;
 use App\Models\Department;
+use App\Models\LeaveInformation;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 
@@ -131,11 +132,13 @@ class HRController extends Controller
     /** create Leave Employee */
     public function createLeaveEmployee()
     {
-        return view('HR.LeavesManage.create-leave-employee');
+        $leaveInformation = LeaveInformation::all();
+        return view('HR.LeavesManage.create-leave-employee',compact('leaveInformation'));
     }
 
     /** leave HR */
-    public function leaveHR() {
+    public function leaveHR()
+    {
         return view('HR.LeavesManage.leave-hr');
     }
 
@@ -148,7 +151,8 @@ class HRController extends Controller
     /** create Leave HR */
     public function createLeaveHR()
     {
-        return view('HR.LeavesManage.create-leave-hr');
+        $leaveInformation = LeaveInformation::all();
+        return view('HR.LeavesManage.create-leave-hr',compact('leaveInformation'));
     }
 
     /** attendance Main */

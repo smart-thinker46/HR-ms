@@ -88,37 +88,19 @@
                             <div>
                                 <table class="w-full mb-0">
                                     <tbody>
-                                        <tr>
-                                            <td class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">Medical Leave</td>
-                                            <th class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">04</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">Casual Leave</td>
-                                            <th class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">08</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">Sick Leave</td>
-                                            <th class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">03</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">Annual Leave</td>
-                                            <th class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">12</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">Use Leave</td>
-                                            <th class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">09</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">Remaining Leave</td>
-                                            <th class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">18</th>
-                                        </tr>
+                                        @foreach($leaveInformation as $key => $value)
+                                            <tr>
+                                                <td class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">{{ $value->leave_type }}</td>
+                                                <th class="px-3.5 py-2.5 first:pl-0 last:pr-0 border-y border-transparent">{{ $value->leave_days }}</th>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                </div><!--end col-->
-            </div><!--end grid-->
+                </div>
+            </div>
 
         </div>
         <!-- container-fluid -->
