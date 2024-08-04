@@ -35,6 +35,10 @@ class HRController extends Controller
             'photo'        => 'required|image|',
             'name'         => 'required|string',
             'email'        => 'required|string|email|max:255|unique:users',
+            'position'     => 'required|string',
+            'department'   => 'required|string',
+            'role_name'    => 'required|string',
+            'status'       => 'required|string',
             'phone_number' => 'required|numeric',
             'location'     => 'required|string',
             'join_date'    => 'required|string',
@@ -50,23 +54,25 @@ class HRController extends Controller
             $register               = new User;
             $register->name         = $request->name;
             $register->email        = $request->email;
+            $register->position     = $request->position;
+            $register->department   = $request->department;
+            $register->role_name    = $request->role_name;
+            $register->status       = $request->status;
             $register->phone_number = $request->phone_number;
             $register->location     = $request->location;
             $register->join_date    = $request->join_date;
             $register->experience   = $request->experience;
             $register->designation  = $request->designation;
-            $register->role_name    = 'User Normal';
-            $register->status       = 'Active';
             $register->avatar       = $photo;
             $register->password     = Hash::make('Hello@123');
             $register->save();
 
-            Toastr::success('Add new employee successfully :)','Success');
+            Toastr::success('Add new record successfully :)','Success');
             return redirect()->back();
         } catch(\Exception $e) {
             \Log::info($e);
             DB::rollback();
-            Toastr::error('Add new employee fail :)','Error');
+            Toastr::error('Add new record fail :)','Error');
             return redirect()->back();
         }
     }

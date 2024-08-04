@@ -39,6 +39,7 @@
                                 <th hidden>Photo</th>
                                 <th hidden>Location</th>
                                 <th hidden>Join Date</th>
+                                <th hidden>Status</th>
                                 <th class="ltr:!text-left rtl:!text-right">Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
@@ -64,10 +65,11 @@
                                 @endphp
                                 <tr class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                     <td>{{ ++$key }}</td>
-                                    <td class="user_id">{{ $employee->user_id }}</td>
+                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5"><a href="#!" class="transition-all duration-150 ease-linear text-custom-500 hover:text-custom-600 user-id user_id">{{ $employee->user_id }}</a></td>
                                     <td hidden class="photo">{{ $employee->avatar }}</td>
                                     <td hidden class="location">{{ $employee->location }}</td>
                                     <td hidden class="join_date">{{ $employee->join_date }}</td>
+                                    <td hidden class="status">{{ $employee->status }}</td>
                                     <td class="px-3.5 py-2.5 first:pl-5 last:pr-5">
                                         <div class="flex items-center gap-2">
                                             <div class="flex items-center justify-center font-medium rounded-full size-10 shrink-0 bg-slate-200 text-slate-800 dark:text-zink-50 dark:bg-zink-600">
@@ -80,7 +82,7 @@
                                                 @endif
                                             </div>
                                             <div class="grow">
-                                                <h6 class="mb-1"><a href="#!" class="name">{{ $employee->name }}</a></h6>
+                                                <h6 class="mb-1"><a href="{{ route('page/account') }}" class="name">{{ $employee->name }}</a></h6>
                                                 <p class="text-slate-500 dark:text-zink-200 position">{{ $employee->position }}</p>
                                             </div>
                                         </div>
@@ -90,14 +92,26 @@
                                     <td class="experience">{{ $employee->experience }}</td>
                                     <td>{{ \Carbon\Carbon::parse($employee->join_date)->diffForHumans(); }}</td>
                                     <td>{{ \Carbon\Carbon::parse($employee->last_login)->diffForHumans(); }}</td>
-                                    <td>{{ $employee->role_name }}</td>
+                                    <td class="role_name">{{ $employee->role_name }}</td>
                                     <td class="designation">{{ $employee->designation }}</td>
                                     <td class="department">{{ $employee->department }}</td>
                                     <td class="px-3.5 py-2.5 first:pl-5 last:pr-5">
-                                        <span class="px-2.5 py-0.5 text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent inline-flex items-center status">
-                                            <i data-lucide="check-circle" class="size-3 mr-1.5"></i> 
-                                            Active
-                                        </span>
+                                        @if($employee->status == 'Active')
+                                            <span class="px-2.5 py-0.5 text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent inline-flex items-center">
+                                                <i data-lucide="check-circle" class="size-3 mr-1.5"></i> 
+                                                {{ $employee->status }}
+                                            </span>
+                                        @elseif($employee->status == 'Inactive')
+                                            <span class="px-2.5 py-0.5 inline-flex items-center text-xs font-medium rounded border bg-slate-100 border-transparent text-slate-500 dark:bg-slate-500/20 dark:text-zink-200 dark:border-transparent status">
+                                                <i data-lucide="loader" class="size-3 mr-1.5"></i>
+                                                {{ $employee->status }}
+                                            </span>
+                                        @elseif($employee->status == 'Disable')
+                                            <span class="px-2.5 py-0.5 inline-flex items-center text-xs font-medium rounded border bg-red-100 border-transparent text-red-500 dark:bg-red-500/20 dark:border-transparent status">
+                                                <i data-lucide="x" class="size-3 mr-1.5"></i>
+                                                {{ $employee->status }}
+                                            </span>
+                                        @endif
                                     </td>
                                     <td class="Action">
                                         <div class="flex gap-3">
@@ -166,6 +180,57 @@
                             <label for="emailInput" class="inline-block mb-2 text-base font-medium">Email</label>
                             <input type="text" name="email" id="emailInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('email') is-invalid @enderror " placeholder="example@starcode.com" value="{{ old('email') }}">
                             @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="xl:col-span-12">
+                            <label for="positionInput" class="inline-block mb-2 text-base font-medium">Position</label>
+                            <select name="position" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" data-choices="" data-choices-search-false="" id="typeSelect">
+                                <option value="">-- Select Position --</option>
+                                @foreach($position as $key => $value)
+                                <option value="{{ $value->position }}">{{ $value->position }}</option>
+                                @endforeach
+                            </select>
+                            @error('position')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="xl:col-span-12">
+                            <label for="positionInput" class="inline-block mb-2 text-base font-medium">Department</label>
+                            <input type="text" name="department" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('email') is-invalid @enderror " placeholder="Enter department" value="{{ old('department') }}">
+                            @error('department')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="xl:col-span-6">
+                            <label for="role_name" class="inline-block mb-2 text-base font-medium">Role Name</label>
+                            <select name="role_name" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" data-choices="" data-choices-search-false="" id="typeSelect">
+                                <option value="">-- Select Role Name --</option>
+                                @foreach($roleName as $key => $value)
+                                <option value="{{ $value->role_type }}">{{ $value->role_type }}</option>
+                                @endforeach
+                            </select>
+                            @error('position')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="xl:col-span-6">
+                            <label for="status" class="inline-block mb-2 text-base font-medium">Status</label>
+                            <select name="status" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" data-choices="" data-choices-search-false="" id="typeSelect">
+                                <option value="">-- Select Status --</option>
+                                @foreach($statusUser as $key => $value)
+                                <option value="{{ $value->type_name }}">{{ $value->type_name }}</option>
+                                @endforeach
+                            </select>
+                            @error('position')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -289,7 +354,12 @@
                         </div>
                         <div class="xl:col-span-12">
                             <label for="positionInput" class="inline-block mb-2 text-base font-medium">Position</label>
-                            <input type="text" name="position" id="e_position" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('email') is-invalid @enderror " placeholder="Enter position" value="{{ old('position') }}">
+                            <select name="position" id="e_position" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" data-choices-search-false="" id="typeSelect">
+                                <option value="">-- Select Position --</option>
+                                @foreach($position as $key => $value)
+                                <option value="{{ $value->position }}">{{ $value->position }}</option>
+                                @endforeach
+                            </select>
                             @error('position')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -300,6 +370,34 @@
                             <label for="positionInput" class="inline-block mb-2 text-base font-medium">Department</label>
                             <input type="text" name="department" id="e_department" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('email') is-invalid @enderror " placeholder="Enter department" value="{{ old('department') }}">
                             @error('department')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="xl:col-span-6">
+                            <label for="role_name" class="inline-block mb-2 text-base font-medium">Role Name</label>
+                            <select name="role_name" id="e_role_name" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" data-choices-search-false="" id="typeSelect">
+                                <option value="">-- Select Role Name --</option>
+                                @foreach($roleName as $key => $value)
+                                <option value="{{ $value->role_type }}">{{ $value->role_type }}</option>
+                                @endforeach
+                            </select>
+                            @error('position')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="xl:col-span-6">
+                            <label for="status" class="inline-block mb-2 text-base font-medium">Status</label>
+                            <select name="status" id="e_status" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" data-choices-search-false="" id="typeSelect">
+                                <option value="">-- Select Status --</option>
+                                @foreach($statusUser as $key => $value)
+                                <option value="{{ $value->type_name }}">{{ $value->type_name }}</option>
+                                @endforeach
+                            </select>
+                            @error('position')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -418,6 +516,8 @@
         $('#e_join_date').val(_this.find('.join_date').text());
         $('#e_experience').val(_this.find('.experience').text());
         $('#e_department').val(_this.find('.department').text());
+        $('#e_role_name').val(_this.find('.role_name').text());
+        $('#e_status').val(_this.find('.status').text());
         $('#e_designation').val(_this.find('.designation').text());
 
     });
