@@ -35,6 +35,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th hidden>ID</th>
                                 <th>Employee ID</th>
                                 <th hidden>Photo</th>
                                 <th hidden>Location</th>
@@ -65,6 +66,7 @@
                                 @endphp
                                 <tr class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                     <td>{{ ++$key }}</td>
+                                    <td hidden class="id">{{ $employee->id }}</td>
                                     <td class="px-3.5 py-2.5 first:pl-5 last:pr-5"><a href="#!" class="transition-all duration-150 ease-linear text-custom-500 hover:text-custom-600 user-id user_id">{{ $employee->user_id }}</a></td>
                                     <td hidden class="photo">{{ $employee->avatar }}</td>
                                     <td hidden class="location">{{ $employee->location }}</td>
@@ -131,7 +133,7 @@
     <!-- End Page-content -->
 
     <!--add Employee-->
-    <div id="addEmployeeModal" modal-center="" class="fixed flex flex-col hidden transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show ">
+    <div id="addEmployeeModal" modal-center="" class="fixed flex flex-col hidden transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
         <div class="w-screen md:w-[30rem] bg-white shadow rounded-md dark:bg-zink-600">
             <div class="flex items-center justify-between p-4 border-b dark:border-zink-500">
                 <h5 class="text-16">Add Employee</h5>
@@ -289,7 +291,7 @@
                     </div>
                     <div class="flex justify-end gap-2 mt-4">
                         <button type="reset" id="close-modal" data-modal-close="addEmployeeModal" class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100 focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-600 dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">Cancel</button>
-                        <button type="submit" id="addNew" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20 ">Add Employee</button>
+                        <button type="submit" id="addNew" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20 addEmployeeModal">Add Employee</button>
                     </div>
                 </form>
             </div>
@@ -307,9 +309,9 @@
                 </button>
             </div>
             <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
-                <form class="create-form" id="create-form" action="{{ route('hr/employee/save') }}" method="POST" enctype="multipart/form-data">
+                <form class="create-form" id="create-form" action="{{ route('hr/employee/update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" value="" name="id" id="id">
+                    <input type="hidden" name="id" id="e_id" value="">
                     <input type="hidden" value="add" name="action" id="action">
                     <input type="hidden" id="id-field">
                     <div id="alert-error-msg" class="hidden px-4 py-3 text-sm text-red-500 border border-transparent rounded-md bg-red-50 dark:bg-red-500/20"></div>
@@ -332,7 +334,7 @@
                         </div>
                         <div class="xl:col-span-12">
                             <label for="employeeId" class="inline-block mb-2 text-base font-medium">Employee ID</label>
-                            <input type="text" id="e_employee_id" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" disabled="">
+                            <input type="text" name="employee_id" id="e_employee_id" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" readonly="">
                         </div>
                         <div class="xl:col-span-12">
                             <label for="employeeInput" class="inline-block mb-2 text-base font-medium">Name</label>
@@ -507,6 +509,7 @@
         }
 
         $('#e_photo_edit').attr("src",photos);
+        $('#e_id').val(_this.find('.id').text());
         $('#e_employee_id').val(_this.find('.user_id').text());
         $('#e_name').val(_this.find('.name').text());
         $('#e_email').val(_this.find('.email').text());

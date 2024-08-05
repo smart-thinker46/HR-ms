@@ -77,6 +77,47 @@ class HRController extends Controller
         }
     }
 
+    /** update record employee */
+    public function employeeUpdateRecord(Request $request)
+    {
+        try {
+
+            $user = User::find($request->id);
+            
+            if (!empty($request->photo)) { // ! empty image upload file name
+                $photo = $request->name.'.'.$request->photo->extension();  
+                $request->photo->move(public_path('assets/images/user'), $photo);
+                if (!empty($user->avatar)) { // ! empty image in path user
+                    unlink(public_path('assets/images/user/'.$user->avatar));
+                }
+            } else {
+                $photo = $user->avatar; // get image name from databases
+            }
+
+            $user->name         = $request->name;
+            $user->email        = $request->email;
+            $user->position     = $request->position;
+            $user->department   = $request->department;
+            $user->role_name    = $request->role_name;
+            $user->status       = $request->status;
+            $user->phone_number = $request->phone_number;
+            $user->location     = $request->location;
+            $user->join_date    = $request->join_date;
+            $user->experience   = $request->experience;
+            $user->designation  = $request->designation;
+            $user->avatar       = $photo;
+            $user->save();
+
+            Toastr::success('Update record successfully :)','Success');
+            return redirect()->back();
+        } catch(\Exception $e) {
+            \Log::info($e);
+            DB::rollback();
+            Toastr::error('Update record fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
     /** holiday Page */
     public function holidayPage()
     {
