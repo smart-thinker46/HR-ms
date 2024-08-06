@@ -85,7 +85,7 @@ class HRController extends Controller
             $user = User::find($request->id);
             
             if (!empty($request->photo)) { // ! empty image upload file name
-                $photo = $request->name.'.'.$request->photo->extension();  
+                $photo = $request->name.'-'.time().'.'.$request->photo->extension();  
                 $request->photo->move(public_path('assets/images/user'), $photo);
                 if (!empty($user->avatar)) { // ! empty image in path user
                     unlink(public_path('assets/images/user/'.$user->avatar));
