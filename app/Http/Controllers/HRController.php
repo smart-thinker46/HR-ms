@@ -118,6 +118,27 @@ class HRController extends Controller
         }
     }
 
+    /** delete record employee */
+    public function employeeDeleteRecord(Request $request)
+    {
+        try {
+
+            $deleteRecord = User::findOrFail($request->id_delete);
+            $deleteRecord->delete();
+            if (!empty($request->del_photo)) {
+                unlink(public_path('assets/images/user/'.$request->del_photo));
+            }
+
+            Toastr::success('Delete record successfully :)','Success');
+            return redirect()->back();
+        } catch(\Exception $e) {
+            \Log::info($e);
+            DB::rollback();
+            Toastr::error('Delete record fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
     /** holiday Page */
     public function holidayPage()
     {
