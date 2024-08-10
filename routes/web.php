@@ -93,7 +93,7 @@ Route::group(['namespace' => 'App\Http\Controllers'],function()
         Route::get('hr/attendance/page', 'attendance')->middleware('auth')->name('hr/attendance/page');
         Route::get('hr/create/leave/hr/page', 'createLeaveHR')->middleware('auth')->name('hr/create/leave/hr/page');
 
-        // Route::post('hr/get/information/leave', 'getInformationLeave')->middleware('auth')->name('hr/get/information/leave');
+        Route::post('hr/get/information/leave', 'getInformationLeave')->middleware('auth')->name('hr/get/information/leave');
        
         Route::get('hr/attendance/main/page', 'attendanceMain')->middleware('auth')->name('hr/attendance/main/page');
         Route::get('hr/department/page', 'department')->middleware('auth')->name('hr/department/page');

@@ -191,6 +191,25 @@ class HRController extends Controller
         }
     }
 
+    /** get information leave */
+    public function getInformationLeave(Request $request)
+    {
+        try {
+            $leave_type = LeaveInformation::where('leave_type',$request->leave_type)->first();
+            $data = [];
+            $data['response_code']  = '200';
+            $data['status']         = 'success';
+            $data['message']        = 'Get success';
+            $data['leave_type']     = $leave_type;
+            return response()->json($data);
+
+        } catch (\Exception $e) {
+            // Log the exception and return an appropriate response
+            \Log::error($e->getMessage());
+            return response()->json(['error' => 'An error occurred.'], 500);
+        }
+    }
+
     /** leave Employee */
     public function leaveEmployee()
     {
