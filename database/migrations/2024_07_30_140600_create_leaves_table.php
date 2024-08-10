@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('number_of_day')->nullable();
             $table->string('leave_day')->nullable();
             $table->string('reason')->nullable();
+            $table->string('year_leave')->nullable();
             $table->timestamps();
         });
     }

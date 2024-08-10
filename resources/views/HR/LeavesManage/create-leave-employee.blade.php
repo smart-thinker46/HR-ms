@@ -25,7 +25,7 @@
                                     <div class="xl:col-span-6">
                                         <div>
                                             <label for="leaveType" class="inline-block mb-2 text-base font-medium">Leave Type</label>
-                                            <select name="leave_type" class="form-input border-slate-200 focus:outline-none focus:border-custom-500" data-choices="" data-choices-search-false="" name="leaveType" id="leaveType">
+                                            <select name="leave_type" id="leave_type" class="leave_type form-input border-slate-200 focus:outline-none focus:border-custom-500" data-choices="" data-choices-search-false="">
                                                 <option value="">Select Leave Type</option>
                                                 <option value="Medical Leave">Medical Leave</option>
                                                 <option value="Casual Leave">Casual Leave</option>
@@ -37,26 +37,26 @@
                                     <div class="xl:col-span-6">
                                         <div>
                                             <label for="remainingLeaves" class="inline-block mb-2 text-base font-medium">Remaining Leaves</label>
-                                            <input type="text" name="remaining_leave" id="remainingLeaves" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="18" disabled="">
+                                            <input type="text" name="remaining_leave" id="remaining_leave" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="0" disabled="">
                                         </div>
                                     </div>
                                     <div class="xl:col-span-6">
                                         <label for="fromInput" class="inline-block mb-2 text-base font-medium">From</label>
-                                        <input type="text" name="date_from" id="fromInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Select date" data-provider="flatpickr" data-date-format="d M, Y">
+                                        <input type="text" name="date_from" id="date_from" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Select date" data-provider="flatpickr" data-date-format="d M, Y">
                                     </div>
                                     <div class="xl:col-span-6">
                                         <label for="toInput" class="inline-block mb-2 text-base font-medium">To</label>
-                                        <input type="text" name="date_to" id="toInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Select date" data-provider="flatpickr" data-date-format="d M, Y">
+                                        <input type="text" name="date_to" id="date_to" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Select date" data-provider="flatpickr" data-date-format="d M, Y">
                                     </div>
                                     <div class="xl:col-span-6">
                                         <div>
-                                            <label for="numberOfDayLeaves" class="inline-block mb-2 text-base font-medium">Number of Days</label>
-                                            <input type="text" name="number_of_day" id="numberOfDayLeaves" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="01" disabled="">
+                                            <label for="number_of_day" class="inline-block mb-2 text-base font-medium">Number of Days</label>
+                                            <input type="text" name="number_of_day" id="number_of_day" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="0" disabled="">
                                         </div>
                                     </div>
                                     <div class="xl:col-span-6">
                                         <label for="leaveDayInput" class="inline-block mb-2 text-base font-medium">Leave Day</label>
-                                        <select name="leave_day" class="form-input border-slate-200 focus:outline-none focus:border-custom-500" data-choices="" data-choices-search-false="" name="leaveDayInput" id="leaveDayInput">
+                                        <select name="leave_day" id="leave_day" class="form-input border-slate-200 focus:outline-none focus:border-custom-500" data-choices="" data-choices-search-false="" name="leaveDayInput" id="leaveDayInput">
                                             <option value="">Select Leave Day</option>
                                             <option value="Full-Day Leave">Full-Day Leave</option>
                                             <option value="Half Day Morning Leave">Half Day Morning Leave</option>
@@ -103,11 +103,20 @@
             </div>
 
         </div>
-        <!-- container-fluid -->
     </div>
-    <!-- End Page-content -->
 
 @section('script')
 
 @endsection
 @endsection
+
+
+
+
+
+
+
+
+
+
+
