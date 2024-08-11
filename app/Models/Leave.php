@@ -18,6 +18,7 @@ class Leave extends Model
         'number_of_day',
         'leave_day',
         'reason',
+        'status',
     ];
 
 }
