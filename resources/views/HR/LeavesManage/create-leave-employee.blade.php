@@ -127,6 +127,25 @@
             $('#remaining_leave').val(data.leave_type.leave_days);
         });
     });
+
+    // count days leaves
+    $(document).on('change', '#date_from, #date_to, #leave_day', function() {
+        var dateFrom = new Date($('#date_from').val());
+        var dateTo   = new Date($('#date_to').val());
+        var leaveDay = $('#leave_day').val();
+
+        if (!isNaN(dateFrom.getTime()) && !isNaN(dateTo.getTime())) {
+            var timeDiff = Math.abs(dateTo.getTime() - dateFrom.getTime());
+            var numDays  = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;
+            if (leaveDay === 'Half-Day Afternoon Leave' || leaveDay === 'Half Day Morning Leave') {
+                numDays -= 0.5;
+            }
+            $('#number_of_day').val(numDays);
+        } else {
+            $('#number_of_day').val('0');
+        }
+    });
+
 </script>
 
 @endsection
