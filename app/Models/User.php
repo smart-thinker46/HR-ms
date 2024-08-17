@@ -60,23 +60,16 @@ class User extends Authenticatable
         ];
     }
 
+    /** auto generate id */
     protected static function boot()
     {
         parent::boot();
         self::creating(function ($model) {
-            $getUser = self::orderBy('user_id', 'desc')->first();
-
-            if ($getUser) {
-                $latestID = intval(substr($getUser->user_id, 4));
-                $nextID = $latestID + 1;
-            } else {
-                $nextID = 1;
-            }
-            $model->user_id = 'KH_' . sprintf("%04s", $nextID);
-            while (self::where('user_id', $model->user_id)->exists()) {
-                $nextID++;
-                $model->user_id = 'KH_' . sprintf("%04s", $nextID);
-            }
+            $lastUser = self::orderBy('user_id', 'desc')->first();
+            $nextID  = $lastUser ? intval(substr($lastUser->user_id, 4)) + 1 : 1;
+            do {
+                $model->user_id = 'KH_' . sprintf("%04s", $nextID++);
+            } while (self::where('user_id', $model->user_id)->exists());
         });
     }
 
