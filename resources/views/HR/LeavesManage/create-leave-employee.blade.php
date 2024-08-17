@@ -107,47 +107,58 @@
 @section('script')
 
 <script>
-    // get leave information from database
-    $(document).on('change','#leave_type',function()
-    {
-        // route name url
-        var url = "{{ route('hr/get/information/leave') }}"; // route name url
-        var leave_type = $(this).val();
-        $.ajax({
-            type: 'POST',
-            dataType: 'JSON',
-            url: url,
-            data: {
-                leave_type: leave_type,
-            },
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-        }).then(function(data) {
-            $('#remaining_leave').val(data.leave_type.leave_days);
-        });
-    });
-
-    // count days leaves
-    $(document).on('change', '#date_from, #date_to, #leave_day', function() {
+    // Define the URL for the AJAX request
+    var url = "{{ route('hr/get/information/leave') }}";
+    
+    // Function to handle leave type change
+    function handleLeaveTypeChange() {
+        var leaveType   = $('#leave_type').val();
+        var numberOfDay = $('#number_of_day').val();
+    
+        $.post(url, {
+            leave_type: leaveType,
+            number_of_day: numberOfDay,
+            _token: $('meta[name="csrf-token"]').attr('content')
+        }, function(data) {
+            if (data.response_code == 200) {
+                $('#remaining_leave').val(data.leave_type);
+            }
+        }, 'json');
+    }
+    
+    // Function to count leave days
+    function countLeaveDays() {
         var dateFrom = new Date($('#date_from').val());
         var dateTo   = new Date($('#date_to').val());
         var leaveDay = $('#leave_day').val();
-
-        if (!isNaN(dateFrom.getTime()) && !isNaN(dateTo.getTime())) {
-            var timeDiff = Math.abs(dateTo.getTime() - dateFrom.getTime());
-            var numDays  = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;
-            if (leaveDay === 'Half-Day Afternoon Leave' || leaveDay === 'Half Day Morning Leave') {
-                numDays -= 0.5;
-            }
+    
+        if (!isNaN(dateFrom) && !isNaN(dateTo)) {
+            var numDays = Math.ceil((dateTo - dateFrom) / (1000 * 3600 * 24)) + 1;
+            if (leaveDay.includes('Half-Day')) numDays -= 0.5;
             $('#number_of_day').val(numDays);
+            updateRemainingLeave(numDays);
         } else {
             $('#number_of_day').val('0');
         }
-    });
-
+    }
+    
+    // Function to update remaining leave
+    function updateRemainingLeave(numDays) {
+        $.post(url, {
+            number_of_day: numDays,
+            leave_type: $('#leave_type').val(),
+            _token: $('meta[name="csrf-token"]').attr('content')
+        }, function(data) {
+            if (data.response_code == 200) {
+                $('#remaining_leave').val(data.leave_type);
+            }
+        }, 'json');
+    }
+    
+    // Event listeners
+    $(document).on('change', '#leave_type', handleLeaveTypeChange);
+    $(document).on('change', '#date_from, #date_to, #leave_day', countLeaveDays);
 </script>
-
 @endsection
 @endsection
 

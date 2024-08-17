@@ -21,8 +21,8 @@ File: Common Plugins Js File
     }
 
     loadScriptIfElementsExist("[data-toast]", 'assets/libs/toastify-js/src/toastify.js');
-    loadScriptIfElementsExist("[data-provider]", 'assets/libs/flatpickr/flatpickr.min.js');
-
+    // loadScriptIfElementsExist("[data-provider]", 'assets/libs/flatpickr/flatpickr.min.js');
+    
     function pluginData() {
 
         // Toast UI Notification

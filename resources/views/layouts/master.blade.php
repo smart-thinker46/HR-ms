@@ -73,18 +73,18 @@
                         <div class="items-center justify-center hidden px-5 text-center h-header group-data-[layout=horizontal]:md:flex group-data-[layout=horizontal]:ltr::pl-0 group-data-[layout=horizontal]:rtl:pr-0">
                             <a href="{{ route('home') }}">
                                 <span class="hidden">
-                                    <img src="assets/images/logo.png" alt="" class="h-6 mx-auto">
+                                    <img src="{{ URL::to('assets/images/logo.png') }}" alt="" class="h-6 mx-auto">
                                 </span>
                                 <span class="group-data-[topbar=dark]:hidden group-data-[topbar=brand]:hidden">
-                                    <img src="assets/images/logo-dark.png" alt="" class="h-6 mx-auto">
+                                    <img src="{{ URL::to('assets/images/logo-dark.png') }}" alt="" class="h-6 mx-auto">
                                 </span>
                             </a>
                             <a href="{{ route('home') }}" class="hidden group-data-[topbar=dark]:block group-data-[topbar=brand]:block">
                                 <span class="group-data-[topbar=dark]:hidden group-data-[topbar=brand]:hidden">
-                                    <img src="assets/images/logo.png" alt="" class="h-6 mx-auto">
+                                    <img src="{{ URL::to('assets/images/logo.png') }}" alt="" class="h-6 mx-auto">
                                 </span>
                                 <span class="group-data-[topbar=dark]:block group-data-[topbar=brand]:block">
-                                    <img src="assets/images/logo-light.png" alt="" class="h-6 mx-auto">
+                                    <img src="{{ URL::to('assets/images/logo-light.png') }}" alt="" class="h-6 mx-auto">
                                 </span>
                             </a>
                         </div>
@@ -153,7 +153,7 @@
                                         <div class="flex flex-col gap-1" id="notification-list">
                                             <a href="#!" class="flex gap-3 p-4 product-item hover:bg-slate-50 dark:hover:bg-zink-500 follower">
                                                 <div class="w-10 h-10 rounded-md shrink-0 bg-slate-100">
-                                                    <img src="assets/images/avatar-3.png" alt="" class="rounded-md">
+                                                    <img src="{{ URL::to('assets/images/avatar-3.png') }}" alt="" class="rounded-md">
                                                 </div>
                                                 <div class="grow">
                                                     <h6 class="mb-1 font-medium"><b>@willie_passem</b> followed you</h6>
@@ -165,7 +165,7 @@
                                             </a>
                                             <a href="#!" class="flex gap-3 p-4 product-item hover:bg-slate-50 dark:hover:bg-zink-500 mention">
                                                 <div class="w-10 h-10 bg-yellow-100 rounded-md shrink-0">
-                                                    <img src="assets/images/avatar-5.png" alt="" class="rounded-md">
+                                                    <img src="{{ URL::to('assets/images/avatar-5.png') }}" alt="" class="rounded-md">
                                                 </div>
                                                 <div class="grow">
                                                     <h6 class="mb-1 font-medium"><b>@caroline_jessica</b> commented on your post</h6>
@@ -191,7 +191,7 @@
                                             <a href="#!" class="flex gap-3 p-4 product-item hover:bg-slate-50 dark:hover:bg-zink-500 mention">
                                                 <div class="relative shrink-0">
                                                     <div class="w-10 h-10 bg-pink-100 rounded-md">
-                                                        <img src="assets/images/avatar-7.png" alt="" class="rounded-md">
+                                                        <img src="{{ URL::to('assets/images/avatar-7.png') }}" alt="" class="rounded-md">
                                                     </div>
                                                     <div class="absolute text-orange-500 -bottom-0.5 -right-0.5 text-16">
                                                         <i class="ri-heart-fill"></i>

@@ -195,12 +195,26 @@ class HRController extends Controller
     public function getInformationLeave(Request $request)
     {
         try {
-            $leave_type = LeaveInformation::where('leave_type',$request->leave_type)->first();
-            $data = [];
-            $data['response_code']  = '200';
-            $data['status']         = 'success';
-            $data['message']        = 'Get success';
-            $data['leave_type']     = $leave_type;
+
+            $numberOfDay = $request->number_of_day;
+            $leaveType   = $request->leave_type;
+            
+            $leaveDay = LeaveInformation::where('leave_type', $leaveType)->first();
+            
+            if ($leaveDay) {
+                $days = $leaveDay->leave_days - ($numberOfDay ?? 0);
+            } else {
+                $days = 0; // Handle case if leave type doesn't exist
+            }
+            
+            $data = [
+                'response_code' => 200,
+                'status'        => 'success',
+                'message'       => 'Get success',
+                'leave_type'    => $days,
+                'number_of_day' => $numberOfDay,
+            ];
+            
             return response()->json($data);
 
         } catch (\Exception $e) {
