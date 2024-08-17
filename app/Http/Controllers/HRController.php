@@ -16,23 +16,28 @@ class HRController extends Controller
     /** employee list */
     public function employeeList()
     {
+        // Retrieve all employees
         $employeeList = User::all();
-        $id = User::orderBy('id', 'DESC')->first()->user_id;
-        $userId = (int)substr($id, 4) + 1;
-        $employeeId = 'KH_000'.$userId;
-        $roleName   = DB::table('role_type_users')->get();
-        $position   = DB::table('position_types')->get();
+        
+        // Get the latest user ID and generate the next employee ID
+        $latestUser = User::orderBy('id', 'DESC')->first();
+        $userId     = $latestUser ? (int) substr($latestUser->user_id, 4) + 1 : 1;
+        $employeeId = 'KH_' . str_pad($userId, 3, '0', STR_PAD_LEFT); // Zero pad to always show 3 digits
+
+        // Retrieve necessary data for the view
+        $roleName = DB::table('role_type_users')->get();
+        $position = DB::table('position_types')->get();
         $department = DB::table('departments')->get();
         $statusUser = DB::table('user_types')->get();
-        return view('HR.employee',compact('employeeList','employeeId','roleName','position','department','statusUser'));
+
+        return view('HR.employee', compact('employeeList', 'employeeId', 'roleName', 'position', 'department', 'statusUser'));
     }
 
     /** save record employee */
     public function employeeSaveRecord(Request $request)
     {
-        // In your controller or route handler
         $request->validate([
-            'photo'        => 'required|image|',
+            'photo'        => 'required|image',
             'name'         => 'required|string',
             'email'        => 'required|string|email|max:255|unique:users',
             'position'     => 'required|string',
@@ -47,32 +52,34 @@ class HRController extends Controller
         ]);
 
         try {
-
-            $photo = $request->name.'.'.$request->photo->extension();  
+            // Generate the photo file name
+            $photo = $request->name . '.' . $request->photo->extension();  
             $request->photo->move(public_path('assets/images/user'), $photo);
 
-            $register               = new User;
-            $register->name         = $request->name;
-            $register->email        = $request->email;
-            $register->position     = $request->position;
-            $register->department   = $request->department;
-            $register->role_name    = $request->role_name;
-            $register->status       = $request->status;
-            $register->phone_number = $request->phone_number;
-            $register->location     = $request->location;
-            $register->join_date    = $request->join_date;
-            $register->experience   = $request->experience;
-            $register->designation  = $request->designation;
-            $register->avatar       = $photo;
-            $register->password     = Hash::make('Hello@123');
+            // Create a new user instance and populate fields
+            $register = new User();
+            $register->fill([
+                'name'         => $request->name,
+                'email'        => $request->email,
+                'position'     => $request->position,
+                'department'   => $request->department,
+                'role_name'    => $request->role_name,
+                'status'       => $request->status,
+                'phone_number' => $request->phone_number,
+                'location'     => $request->location,
+                'join_date'    => $request->join_date,
+                'experience'   => $request->experience,
+                'designation'  => $request->designation,
+                'avatar'       => $photo,
+                'password'     => Hash::make('Hello@123'),
+            ]);
             $register->save();
 
-            Toastr::success('Add new record successfully :)','Success');
+            Toastr::success('Record added successfully :)', 'Success');
             return redirect()->back();
-        } catch(\Exception $e) {
-            \Log::info($e);
-            DB::rollback();
-            Toastr::error('Add new record fail :)','Error');
+        } catch (\Exception $e) {
+            \Log::error($e); // Log the error
+            Toastr::error('Failed to add record :)', 'Error');
             return redirect()->back();
         }
     }
@@ -149,26 +156,28 @@ class HRController extends Controller
     /** save record holiday */
     public function holidaySaveRecord(Request $request)
     {
-        // In your controller or route handler
         $request->validate([
             'holiday_type' => 'required|string',
             'holiday_name' => 'required|string',
             'holiday_date' => 'required|string',
         ]);
-
+    
         try {
-            $holiday = Holiday::UpdateOrCreate(['id'=>$request->idUpdate]);
-            $holiday->holiday_type  = $request->holiday_type;
-            $holiday->holiday_name  = $request->holiday_name;
-            $holiday->holiday_date  = $request->holiday_date;
-            $holiday->save();
-
-            Toastr::success('Create or Update Holiday successfully :)','Success');
+            // Use updateOrCreate to handle both creation and update
+            $holiday = Holiday::updateOrCreate(
+                ['id' => $request->idUpdate],
+                [
+                    'holiday_type' => $request->holiday_type,
+                    'holiday_name' => $request->holiday_name,
+                    'holiday_date' => $request->holiday_date,
+                ]
+            );
+    
+            Toastr::success('Holiday created or updated successfully :)', 'Success');
             return redirect()->back();
-        } catch(\Exception $e) {
-            \Log::info($e);
-            DB::rollback();
-            Toastr::error('Add Holiday fail :)','Error');
+        } catch (\Exception $e) {
+            \Log::error($e); // Log the error
+            Toastr::error('Failed to add holiday :)', 'Error');
             return redirect()->back();
         }
     }
@@ -177,16 +186,15 @@ class HRController extends Controller
     public function holidayDeleteRecord(Request $request) 
     {
         try {
+            // Find the holiday record or fail if not found
+            $holiday = Holiday::findOrFail($request->id_delete);
+            $holiday->delete();
 
-            $holidayDelete = Holiday::findOrFail($request->id_delete);
-            $holidayDelete->delete();
-
-            Toastr::success('Delete Holiday successfully :)','Success');
+            Toastr::success('Holiday deleted successfully :)', 'Success');
             return redirect()->back();
-        } catch(\Exception $e) {
-            \Log::info($e);
-            DB::rollback();
-            Toastr::error('Delete Holiday fail :)','Error');
+        } catch (\Exception $e) {
+            \Log::error($e); // Log the error
+            Toastr::error('Failed to delete holiday :)', 'Error');
             return redirect()->back();
         }
     }
@@ -272,30 +280,32 @@ class HRController extends Controller
     /** save record department */
     public function saveRecordDepartment(Request $request)
     {
-        // In your controller or route handler
         $request->validate([
-            'department'   => 'required|string',
-            'head_of'      => 'required|string',
-            'phone_number' => 'required|integer',
-            'email'        => 'required|email',
-            'total_employee' => 'required|integer',
+            'department'      => 'required|string',
+            'head_of'         => 'required|string',
+            'phone_number'    => 'required|integer',
+            'email'           => 'required|email',
+            'total_employee'  => 'required|integer',
         ]);
-
+    
         try {
-            $department = Department::UpdateOrCreate(['id'=>$request->id_update]);
-            $department->department      = $request->department;
-            $department->head_of         = $request->head_of;
-            $department->phone_number    = $request->phone_number;
-            $department->email           = $request->email;
-            $department->total_employee  = $request->total_employee;
-            $department->save();
-
-            Toastr::success('Create or Update Department successfully :)','Success');
+            // Use updateOrCreate to handle both creation and update
+            $department = Department::updateOrCreate(
+                ['id' => $request->id_update],
+                [
+                    'department'     => $request->department,
+                    'head_of'        => $request->head_of,
+                    'phone_number'   => $request->phone_number,
+                    'email'          => $request->email,
+                    'total_employee' => $request->total_employee,
+                ]
+            );
+    
+            Toastr::success('Department created or updated successfully :)', 'Success');
             return redirect()->back();
-        } catch(\Exception $e) {
-            \Log::info($e);
-            DB::rollback();
-            Toastr::error('Add Department fail :)','Error');
+        } catch (\Exception $e) {
+            \Log::error($e);
+            Toastr::error('Failed to add or update department :)', 'Error');
             return redirect()->back();
         }
     }
@@ -304,16 +314,15 @@ class HRController extends Controller
     public function deleteRecordDepartment(Request $request)
     {
         try {
+            // Find the department or fail if not found
+            $department = Department::findOrFail($request->id_delete);
+            $department->delete();
 
-            $delete = Department::findOrFail($request->id_delete);
-            $delete->delete();
-
-            Toastr::success('Delete record successfully :)','Success');
+            Toastr::success('Record deleted successfully :)', 'Success');
             return redirect()->back();
-        } catch(\Exception $e) {
-            \Log::info($e);
-            DB::rollback();
-            Toastr::error('Delete record fail :)','Error');
+        } catch (\Exception $e) {
+            \Log::error($e); // Log the error
+            Toastr::error('Failed to delete record :)', 'Error');
             return redirect()->back();
         }
     }
