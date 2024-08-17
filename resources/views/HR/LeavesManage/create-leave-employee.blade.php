@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="flex justify-end gap-2 mt-4">
                                     <button type="reset" class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100 focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-700 dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">Reset</button>
-                                    <button type="submit" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Apply Leave</button>
+                                    <button type="submit" id="apply_leave" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Apply Leave</button>
                                 </div>
                             </form>
                         </div>
@@ -113,8 +113,7 @@
     // Function to handle leave type change
     function handleLeaveTypeChange() {
         var leaveType   = $('#leave_type').val();
-        var numberOfDay = $('#number_of_day').val();
-    
+        var numberOfDay = $('#number_of_day').val();    
         $.post(url, {
             leave_type: leaveType,
             number_of_day: numberOfDay,
@@ -151,6 +150,10 @@
         }, function(data) {
             if (data.response_code == 200) {
                 $('#remaining_leave').val(data.leave_type);
+                $('#apply_leave').prop('disabled', data.leave_type <= 0);
+                if (data.leave_type <= 0) {
+                    toastr.info('You cannot apply for leave at this time.');
+                }
             }
         }, 'json');
     }
