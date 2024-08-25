@@ -7,8 +7,26 @@
                 <div class="card-body !px-2.5">
                     <div class="grid grid-cols-1 gap-5 lg:grid-cols-12 2xl:grid-cols-12">
                         <div class="lg:col-span-2 2xl:col-span-1">
+                            @if(!empty($profileDetail->name))
+                                @php
+                                    $fullName = $profileDetail->name;
+                                    $parts = explode(' ', $fullName);
+                                    $initials = '';
+                                    foreach ($parts as $part) {
+                                        $initials .= strtoupper(substr($part, 0, 1));
+                                    }
+                                @endphp
+                            @endif
                             <div class="relative inline-block rounded-full shadow-md size-20 bg-slate-100 profile-user xl:size-28">
-                                <img src="{{ URL::to('assets/images/avatar-1.png') }}" alt="" class="object-cover border-0 rounded-full img-thumbnail user-profile-image">
+                                @if(!empty($profileDetail->avatar))
+                                    <img src="{{ URL::to('assets/images/user/'.$profileDetail->avatar) }}" alt="" class="object-cover border-0 rounded-full img-thumbnail user-profile-image">
+                                @elseif($profileDetail->avatar === null)
+                                    <div class="flex items-center justify-center font-medium rounded-full size-10 shrink-0 bg-slate-200 text-slate-800 dark:text-zink-50 dark:bg-zink-600">
+                                        {{ $initials }}
+                                    </div>
+                                @else
+                                    <img src="{{ URL::to('assets/images/user/'.Session::get('avatar')) }}" alt="" class="object-cover border-0 rounded-full img-thumbnail user-profile-image">
+                                @endif 
                                 <div class="absolute bottom-0 flex items-center justify-center rounded-full size-8 ltr:right-0 rtl:left-0 profile-photo-edit">
                                     <input id="profile-img-file-input" type="file" class="hidden profile-img-file-input">
                                     <label for="profile-img-file-input" class="flex items-center justify-center bg-white rounded-full shadow-lg cursor-pointer size-8 dark:bg-zink-600 profile-photo-edit">
@@ -18,10 +36,33 @@
                             </div>
                         </div><!--end col-->
                         <div class="lg:col-span-10 2xl:col-span-9">
-                            <h5 class="mb-1">StarCode Kh <i data-lucide="badge-check" class="inline-block size-4 text-sky-500 fill-sky-100 dark:fill-custom-500/20"></i></h5>
+                            <h5 class="mb-1">
+                                @if(!empty($profileDetail->name))
+                                    {{ $profileDetail->name }}
+                                @else
+                                    {{ Session::get('name') }} 
+                                @endif 
+                                <i data-lucide="badge-check" class="inline-block size-4 text-sky-500 fill-sky-100 dark:fill-custom-500/20"></i>
+                            </h5>
                             <div class="flex gap-3 mb-4">
-                                <p class="text-slate-500 dark:text-zink-200"><i data-lucide="user-circle" class="inline-block size-4 ltr:mr-1 rtl:ml-1 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-500"></i> Web Developer</p>
-                                <p class="text-slate-500 dark:text-zink-200"><i data-lucide="map-pin" class="inline-block size-4 ltr:mr-1 rtl:ml-1 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-500"></i> Phnom Penh, Cambodia</p>
+                                <p class="text-slate-500 dark:text-zink-200"><i data-lucide="user-circle" class="inline-block size-4 ltr:mr-1 rtl:ml-1 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-500"></i>
+                                    @if(!empty($profileDetail->position))
+                                        {{ $profileDetail->position }}
+                                    @elseif($profileDetail->position === null)
+                                        N/A
+                                    @else
+                                        {{ Session::get('name') }} 
+                                    @endif 
+                                </p>
+                                <p class="text-slate-500 dark:text-zink-200"><i data-lucide="map-pin" class="inline-block size-4 ltr:mr-1 rtl:ml-1 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-500"></i>
+                                    @if(!empty($profileDetail->location))
+                                        {{ $profileDetail->location }}
+                                    @elseif($profileDetail->location === null)
+                                        N/A
+                                    @else
+                                        {{ Session::get('location') }}
+                                    @endif 
+                                </p>
                             </div>
                             <ul class="flex flex-wrap gap-3 mt-4 text-center divide-x divide-slate-200 dark:divide-zink-500 rtl:divide-x-reverse">
                                 <li class="px-5">

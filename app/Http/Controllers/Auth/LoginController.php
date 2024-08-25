@@ -49,6 +49,7 @@ class LoginController extends Controller
                     'join_date'    => $user->join_date,
                     'last_login'   => $todayDate,
                     'phone_number' => $user->phone_number,
+                    'location'     => $user->location,
                     'status'       => $user->status,
                     'role_name'    => $user->role_name,
                     'avatar'       => $user->avatar,

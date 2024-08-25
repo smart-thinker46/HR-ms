@@ -67,7 +67,7 @@
                                 <tr class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                     <td>{{ ++$key }}</td>
                                     <td hidden class="id">{{ $employee->id }}</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5"><a href="#!" class="transition-all duration-150 ease-linear text-custom-500 hover:text-custom-600 user-id user_id">{{ $employee->user_id }}</a></td>
+                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5"><a href="{{ url('page/account/'.$employee->user_id) }}" class="transition-all duration-150 ease-linear text-custom-500 hover:text-custom-600 user-id user_id">{{ $employee->user_id }}</a></td>
                                     <td hidden class="photo">{{ $employee->avatar }}</td>
                                     <td hidden class="location">{{ $employee->location }}</td>
                                     <td hidden class="join_date">{{ $employee->join_date }}</td>
@@ -84,7 +84,7 @@
                                                 @endif
                                             </div>
                                             <div class="grow">
-                                                <h6 class="mb-1"><a href="{{ route('page/account') }}" class="name">{{ $employee->name }}</a></h6>
+                                                <h6 class="mb-1"><a href="{{ url('page/account/'.$employee->user_id) }}" class="name">{{ $employee->name }}</a></h6>
                                                 <p class="text-slate-500 dark:text-zink-200 position">{{ $employee->position }}</p>
                                             </div>
                                         </div>

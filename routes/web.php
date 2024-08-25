@@ -73,7 +73,7 @@ Route::group(['namespace' => 'App\Http\Controllers'],function()
 
     // -------------------------- pages ----------------------//
     Route::controller(AccountController::class)->group(function () {
-        Route::get('page/account', 'index')->middleware('auth')->name('page/account');
+        Route::get('page/account/{user_id}', 'profileDetail')->middleware('auth');
     });
 
     // -------------------------- hr ----------------------//
