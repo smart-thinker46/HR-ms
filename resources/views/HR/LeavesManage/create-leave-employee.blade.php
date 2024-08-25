@@ -19,7 +19,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="mb-4 text-15 grow">Apply Leave</h6>
-                            <form action="#!">
+                            <form action="#!" id="formId">
                                 <div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-12">
                                     <div class="xl:col-span-6">
                                         <div>
@@ -47,6 +47,10 @@
                                         <label for="toInput" class="inline-block mb-2 text-base font-medium">To</label>
                                         <input type="text" name="date_to" id="date_to" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Select date" data-provider="flatpickr" data-date-format="d M, Y">
                                     </div>
+
+                                    <div class="xl:col-span-6" id="leave_dates_display" style="display: none"></div>
+                                    <div class="xl:col-span-6" id="select_Leave_day" style="display: none"></div>
+
                                     <div class="xl:col-span-6">
                                         <div>
                                             <label for="number_of_day" class="inline-block mb-2 text-base font-medium">Number of Days</label>
@@ -126,21 +130,93 @@
     }
     
     // Function to count leave days
-    function countLeaveDays() {
-        var dateFrom = new Date($('#date_from').val());
-        var dateTo   = new Date($('#date_to').val());
-        var leaveDay = $('#leave_day').val();
+    // function countLeaveDays() {
+    //     var dateFrom = new Date($('#date_from').val());
+    //     var dateTo   = new Date($('#date_to').val());
+    //     var leaveDay = $('#leave_day').val();
     
+    //     if (!isNaN(dateFrom) && !isNaN(dateTo)) {
+    //         var numDays = Math.ceil((dateTo - dateFrom) / (1000 * 3600 * 24)) + 1;
+    //         if (leaveDay.includes('Half-Day')) numDays -= 0.5;
+    //         $('#number_of_day').val(numDays);
+    //         updateRemainingLeave(numDays);
+
+    //         // Display each date if numDays > 1
+    //         if (numDays > 1) {
+    //             let leaveDates = [];
+    //             for (let d = 0; d < numDays; d++) {
+    //                 let currentDate = new Date(dateFrom);
+    //                 currentDate.setDate(currentDate.getDate() + d);
+    //                 var formattedDate = (currentDate.getMonth() + 1) + '/' + currentDate.getDate() + '/' + currentDate.getFullYear();
+    //                 leaveDates.push(formattedDate);
+    //             }
+    //             $('#leave_dates_display').text(`Leave days: ${leaveDates.join(', ')}`);
+    //         } else {
+    //             $('#leave_dates_display').text(''); // Clear the display if numDays <= 1
+    //         }
+
+    //     } else {
+    //         $('#number_of_day').val('0');
+    //         $('#leave_dates_display').text(''); // Clear the display in case of invalid dates
+    //     }
+    // }
+
+    function countLeaveDays()
+    {
+        var dateFrom = new Date($('#date_from').val());
+        var dateTo = new Date($('#date_to').val());
+        var leaveDay = $('#leave_day').val();
+
         if (!isNaN(dateFrom) && !isNaN(dateTo)) {
             var numDays = Math.ceil((dateTo - dateFrom) / (1000 * 3600 * 24)) + 1;
             if (leaveDay.includes('Half-Day')) numDays -= 0.5;
+            
             $('#number_of_day').val(numDays);
             updateRemainingLeave(numDays);
+
+            // Clear previous display
+            $('#leave_dates_display').empty();
+
+            // Display each date one by one if numDays > 0
+            if (numDays > 0) {
+                for (let d = 1; d < numDays; d++) {
+                    let currentDate = new Date(dateFrom);
+                    currentDate.setDate(currentDate.getDate() + d);
+                    var formattedDate = currentDate.getDate() + ' ' + (currentDate.getMonth() + 1) + ',' + currentDate.getFullYear();
+
+                    // Append each leave date to the display
+        
+                    document.getElementById('leave_dates_display').style.display = 'block'; // or 'flex', depending on your layout
+                    document.getElementById('select_Leave_day').style.display = 'block'; // or 'flex', depending on your layout
+
+                    const inputDate = formattedDate;
+                    let [day, month, year] = inputDate.split(/[\s,]+/);
+                    let date = new Date(year, month - 1, day - 1);
+                    let formattedDateConvert = date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).replace(/,/g, '');
+
+                    $('#leave_dates_display').append(`
+                        <label for="toInput" class="inline-block mb-2 text-base font-medium">Leave day</label>
+                        <input type="text" name="number_of_day" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="${formattedDateConvert}" data-provider="flatpickr" data-date-format="d M, Y" disabled="">
+                    `);
+                    $('#select_Leave_day').append(`
+                        <label for="leaveDayInput" class="inline-block mb-2 text-base font-medium">Leave Day</label>
+                        <select name="leave_day" class="form-input border-slate-200 focus:outline-none focus:border-custom-500" data-choices="" data-choices-search-false="" name="leaveDayInput" id="leaveDayInput">
+                            <option value="">Select Leave Day</option>
+                            <option value="Full-Day Leave">Full-Day Leave</option>
+                            <option value="Half Day Morning Leave">Half Day Morning Leave</option>
+                            <option value="Half-Day Afternoon Leave">Half-Day Afternoon Leave</option>
+                            <option value="Public Holiday">Public Holiday</option>
+                            <option value="Off Schedule">Off Schedule</option>
+                        </select>
+                    `);
+                }
+            }
         } else {
             $('#number_of_day').val('0');
+            $('#leave_dates_display').text(''); // Clear the display in case of invalid dates
         }
     }
-    
+        
     // Function to update remaining leave
     function updateRemainingLeave(numDays) {
         $.post(url, {
@@ -151,7 +227,7 @@
             if (data.response_code == 200) {
                 $('#remaining_leave').val(data.leave_type);
                 $('#apply_leave').prop('disabled', data.leave_type <= 0);
-                if (data.leave_type <= 0) {
+                if (data.leave_type < 0) {
                     toastr.info('You cannot apply for leave at this time.');
                 }
             }

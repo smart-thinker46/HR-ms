@@ -64,13 +64,18 @@ class User extends Authenticatable
     protected static function boot()
     {
         parent::boot();
+
         self::creating(function ($model) {
+            // Retrieve the last user record ordered by user_id
             $lastUser = self::orderBy('user_id', 'desc')->first();
-            $nextID  = $lastUser ? intval(substr($lastUser->user_id, 4)) + 1 : 1;
+
+            // Determine the next ID number
+            $nextID = $lastUser ? intval(substr($lastUser->user_id, 3)) + 1 : 1;
+
             do {
-                $model->user_id = 'KH_' . sprintf("%04s", $nextID++);
+                // Generate the new user_id
+                $model->user_id = 'KH-' . sprintf("%04s", $nextID++);
             } while (self::where('user_id', $model->user_id)->exists());
         });
     }
-
 }
