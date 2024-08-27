@@ -176,6 +176,7 @@
 
             // Clear previous display
             $('#leave_dates_display').empty();
+            $('#select_Leave_day').empty();
 
             // Display each date one by one if numDays > 0
             if (numDays > 0) {
@@ -214,6 +215,7 @@
         } else {
             $('#number_of_day').val('0');
             $('#leave_dates_display').text(''); // Clear the display in case of invalid dates
+            $('#select_Leave_day').text(''); // Clear the display in case of invalid dates
         }
     }
         
