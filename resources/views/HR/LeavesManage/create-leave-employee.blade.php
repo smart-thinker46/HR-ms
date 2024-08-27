@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="xl:col-span-6">
                                         <label for="leaveDayInput" class="inline-block mb-2 text-base font-medium">Leave Day</label>
-                                        <select name="leave_day" id="leave_day" class="form-input border-slate-200 focus:outline-none focus:border-custom-500" data-choices="" data-choices-search-false="" name="leaveDayInput" id="leaveDayInput">
+                                        <select name="leave_day" id="leave_day" class="form-input border-slate-200 focus:outline-none focus:border-custom-500" data-choices="" data-choices-search-false="">
                                             <option value="">Select Leave Day</option>
                                             <option value="Full-Day Leave">Full-Day Leave</option>
                                             <option value="Half Day Morning Leave">Half Day Morning Leave</option>
@@ -193,15 +193,15 @@
                     const inputDate = formattedDate;
                     let [day, month, year] = inputDate.split(/[\s,]+/);
                     let date = new Date(year, month - 1, day - 1);
-                    let formattedDateConvert = date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).replace(/,/g, '');
+                    let formattedDateConvert = currentDate.getDate() + ' ' + currentDate.toLocaleString('en-GB', { month: 'short' }) + ', ' + currentDate.getFullYear();
 
                     $('#leave_dates_display').append(`
                         <label for="toInput" class="inline-block mb-2 text-base font-medium">Leave day</label>
                         <input type="text" name="number_of_day" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="${formattedDateConvert}" data-provider="flatpickr" data-date-format="d M, Y" disabled="">
                     `);
                     $('#select_Leave_day').append(`
-                        <label for="leaveDayInput" class="inline-block mb-2 text-base font-medium">Leave Day</label>
-                        <select name="leave_day" class="form-input border-slate-200 focus:outline-none focus:border-custom-500" data-choices="" data-choices-search-false="" name="leaveDayInput" id="leaveDayInput">
+                        <label for="select_Leave_day" class="inline-block mb-2 text-base font-medium">Leave Day</label>
+                        <select name="select_Leave_day" class="form-input border-slate-200 focus:outline-none focus:border-custom-500" data-choices="" data-choices-search-false="">
                             <option value="">Select Leave Day</option>
                             <option value="Full-Day Leave">Full-Day Leave</option>
                             <option value="Half Day Morning Leave">Half Day Morning Leave</option>
