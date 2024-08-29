@@ -51,14 +51,14 @@
                                     <div class="xl:col-span-6" id="leave_dates_display" style="display: none"></div>
                                     <div class="xl:col-span-6" id="select_leave_day" style="display: none"></div>
 
-                                    <div class="xl:col-span-6">
+                                    <div class="xl:col-span-12">
                                         <div>
                                             <label for="number_of_day" class="inline-block mb-2 text-base font-medium">Number of Days</label>
                                             <input type="text" name="number_of_day[]" id="number_of_day" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="0" disabled="">
                                         </div>
                                     </div>
-                                    <div class="xl:col-span-6">
-                                        <label for="leaveDayInput" class="inline-block mb-2 text-base font-medium">Leave Day</label>
+                                    <div id="leave_day_select" class="xl:col-span-12" style="display: block">
+                                        <label for="leave_day" class="inline-block mb-2 text-base font-medium">Leave Day</label>
                                         <select name="leave_day" id="leave_day" class="form-input border-slate-200 focus:outline-none focus:border-custom-500" data-choices="" data-choices-search-false="">
                                             <option value="Full-Day Leave">Full-Day Leave</option>
                                             <option value="Half-Day Morning Leave">Half-Day Morning Leave</option>
@@ -146,11 +146,12 @@
 
                 // Display each date one by one if numDays > 0
                 if (numDays > 0) {
-                    for (let d = 1; d < numDays; d++) {
+                    for (let d = 0; d < numDays; d++) {
                         let currentDate = new Date(dateFrom);
                         currentDate.setDate(currentDate.getDate() + d);
                         var formattedDate = currentDate.getDate() + ' ' + (currentDate.getMonth() + 1) + ',' + currentDate.getFullYear();
 
+                        document.getElementById('leave_day_select').style.display = 'block'; // or 'flex', depending on your layout
                         // Append each leave date to the display
                         if (numDays > 1) {
                             document.getElementById('leave_dates_display').style.display = 'block'; // or 'flex', depending on your layout
@@ -166,17 +167,17 @@
 
                             // Append each leave date to the display
                             $('#leave_dates_display').append(`
-                                <label for="${leaveDateInputId}" class="inline-block mb-2 text-base font-medium">Leave Date ${d}</label>
+                                <label for="${leaveDateInputId}" class="inline-block mb-2 text-base font-medium">Leave Date ${d+1}</label>
                                 <input type="text" id="${leaveDateInputId}" name="number_of_day[]" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="${formattedDateConvert}" data-provider="flatpickr" data-date-format="d M, Y" disabled="">
                             `);
                             // Function to generate leave day select elements
                             function generateLeaveDaySelects(numDays) {
                                 $('#select_leave_day').empty(); // Clear existing elements
-                                for (let d = 1; d < numDays; d++) {
+                                for (let d = 0; d < numDays; d++) {
                                     let leaveDayId = `leave_day_${d}`;
-
+                                    document.getElementById('leave_day_select').style.display = 'none'; // or 'flex', depending on your layout
                                     $('#select_leave_day').append(`
-                                        <label for="${leaveDayId}" class="inline-block mb-2 text-base font-medium">Leave Day ${d}</label>
+                                        <label for="${leaveDayId}" class="inline-block mb-2 text-base font-medium">Leave Day ${d+1}</label>
                                         <select id="${leaveDayId}" name="select_leave_day[]" class="form-input border-slate-200 focus:outline-none focus:border-custom-500">
                                             <option value="Full-Day Leave">Full-Day Leave</option>
                                             <option value="Half-Day Morning Leave">Half-Day Morning Leave</option>
@@ -194,12 +195,11 @@
                             // Function to update total leave days and remaining leave
                             function updateLeaveDaysAndRemaining() {
                                 let totalDays = numDays; // Start with the total number of days
-                                for (let d = 1; d < numDays; d++) {
+                                for (let d = 0; d < numDays; d++) {
                                     let leaveType = $(`#leave_day_${d}`).val(); // Get the selected leave type
                                     if (leaveType && leaveType.includes('Half-Day')) totalDays -= 0.5;
                                 }
                                 $('#number_of_day').val(totalDays);
-
                                 // Update remaining leave
                                 updateRemainingLeave(totalDays);
                             }
