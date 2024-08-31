@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('remaining_leave')->nullable();
             $table->string('date_from')->nullable();
             $table->string('date_to')->nullable();
-            $table->string('number_of_day')->nullable();
+            $table->string('leave_date')->nullable();
             $table->string('leave_day')->nullable();
+            $table->string('number_of_day')->nullable();
             $table->string('reason')->nullable();
             $table->string('status')->nullable();
             $table->string('year_leave')->nullable();

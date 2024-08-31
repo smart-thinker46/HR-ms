@@ -14,5 +14,4 @@ class LeaveInformation extends Model
         'leave_days',
         'year_leave',
     ];
-
 }
