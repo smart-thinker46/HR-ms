@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use Hash;
+use Validator;
 use App\Models\User;
 use App\Models\Holiday;
 use App\Models\Department;
@@ -243,6 +244,18 @@ class HRController extends Controller
     {
         $leaveInformation = LeaveInformation::all();
         return view('HR.LeavesManage.create-leave-employee',compact('leaveInformation'));
+    }
+
+    /** save record leave */
+    public function saveRecordLeave(Request $request)
+    {
+        $request->validate([
+            'leave_type' => 'required|string',
+            'date_from'  => 'required',
+            'date_to'    => 'required',
+            'reason'     => 'required',
+        ]);
+    
     }
 
     /** leave HR */

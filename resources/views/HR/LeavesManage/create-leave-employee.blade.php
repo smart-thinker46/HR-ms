@@ -19,7 +19,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="mb-4 text-15 grow">Apply Leave</h6>
-                            <form action="#!" id="formId">
+                            <form id="applyLeave" action="{{ route('hr/create/leave/employee/save') }}" method="POST">
+                                @csrf
                                 <div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-12">
                                     <div class="xl:col-span-6">
                                         <div>
@@ -31,6 +32,11 @@
                                                 <option value="Sick Leave">Sick Leave</option>
                                                 <option value="Annual Leave">Annual Leave</option>
                                             </select>
+                                            @error('leave_type')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="xl:col-span-6">
@@ -41,11 +47,21 @@
                                     </div>
                                     <div class="xl:col-span-6">
                                         <label for="fromInput" class="inline-block mb-2 text-base font-medium">From</label>
-                                        <input type="text" name="date_from" id="date_from" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Select date" data-provider="flatpickr" data-date-format="d M, Y">
+                                        <input type="text" name="date_from" id="date_from" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('date_from') is-invalid @enderror " placeholder="Select date" data-provider="flatpickr" data-date-format="d M, Y">
+                                        @error('date_from')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="xl:col-span-6">
-                                        <label for="toInput" class="inline-block mb-2 text-base font-medium">To</label>
-                                        <input type="text" name="date_to" id="date_to" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Select date" data-provider="flatpickr" data-date-format="d M, Y">
+                                        <label for="date_to" class="inline-block mb-2 text-base font-medium">To</label>
+                                        <input type="text" name="date_to" id="date_to" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('date_to') is-invalid @enderror " placeholder="Select date" data-provider="flatpickr" data-date-format="d M, Y">
+                                        @error('date_to')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="xl:col-span-6" id="leave_dates_display" style="display: none"></div>
@@ -59,7 +75,7 @@
                                     </div>
                                     <div id="leave_day_select" class="xl:col-span-12" style="display: block">
                                         <label for="leave_day" class="inline-block mb-2 text-base font-medium">Leave Day</label>
-                                        <select name="leave_day" id="leave_day" class="form-input border-slate-200 focus:outline-none focus:border-custom-500" data-choices="" data-choices-search-false="">
+                                        <select name="select_leave_day[]" id="leave_day" class="form-input border-slate-200 focus:outline-none focus:border-custom-500" data-choices="" data-choices-search-false="">
                                             <option value="Full-Day Leave">Full-Day Leave</option>
                                             <option value="Half-Day Morning Leave">Half-Day Morning Leave</option>
                                             <option value="Half-Day Afternoon Leave">Half-Day Afternoon Leave</option>
@@ -69,13 +85,18 @@
                                     </div>
                                     <div class="md:col-span-2 xl:col-span-12">
                                         <div>
-                                            <label for="reasonInput" class="inline-block mb-2 text-base font-medium">Reason</label>
-                                            <textarea name="reason" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" id="reasonInput" rows="3"></textarea>
+                                            <label for="reason" class="inline-block mb-2 text-base font-medium">Reason</label>
+                                            <textarea name="reason" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 @error('reason') is-invalid @enderror" rows="3"></textarea>
+                                            @error('reason')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
                                 <div class="flex justify-end gap-2 mt-4">
-                                    <button type="reset" class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100 focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-700 dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">Reset</button>
+                                    <button type="reset" id="reset_btn" class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100 focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-700 dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">Reset</button>
                                     <button type="submit" id="apply_leave" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Apply Leave</button>
                                 </div>
                             </form>
@@ -103,9 +124,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
+
 
 @section('script')
     <script>
@@ -239,6 +260,23 @@
         // Event listeners
         $(document).on('change', '#leave_type', handleLeaveTypeChange);
         $(document).on('change', '#date_from, #date_to, #leave_day', countLeaveDays);
+
+        // reset data in form
+        $(document).on('click', '#reset_btn', function() {
+            // Clear the leave dates display
+            $('#leave_dates_display').empty();
+            // Clear the select leave day display
+            $('#select_leave_day').empty();
+            // Reset other relevant fields
+            $('#number_of_day').val('');
+            $('#date_from').val('');
+            $('#date_to').val('');
+            $('#leave_type').val(''); // Reset to default value if needed
+            $('#remaining_leave').val('');
+            // Optionally hide any UI elements
+            $('#leave_day_select').hide(); // or reset to its original state
+        });
+
     </script>
 @endsection
 @endsection

@@ -77,28 +77,32 @@ Route::group(['namespace' => 'App\Http\Controllers'],function()
     });
 
     // -------------------------- hr ----------------------//
-    Route::controller(HRController::class)->group(function () {
-        Route::get('hr/employee/list', 'employeeList')->middleware('auth')->name('hr/employee/list');
-        Route::post('hr/employee/save', 'employeeSaveRecord')->middleware('auth')->name('hr/employee/save'); // save employee record
-        Route::post('hr/employee/update', 'employeeUpdateRecord')->middleware('auth')->name('hr/employee/update'); // update employee record
-        Route::post('hr/employee/delete', 'employeeDeleteRecord')->middleware('auth')->name('hr/employee/delete'); // delete employee record
-        
-        Route::get('hr/holidays/page', 'holidayPage')->middleware('auth')->name('hr/holidays/page');
-        Route::post('hr/holidays/save', 'holidaySaveRecord')->middleware('auth')->name('hr/holidays/save'); // save or update record
-        Route::post('hr/holidays/delete', 'holidayDeleteRecord')->middleware('auth')->name('hr/holidays/delete'); // delete record
-        
-        Route::get('hr/leave/employee/page', 'leaveEmployee')->middleware('auth')->name('hr/leave/employee/page');
-        Route::get('hr/create/leave/employee/page', 'createLeaveEmployee')->middleware('auth')->name('hr/create/leave/employee/page');
-        Route::get('hr/leave/hr/page', 'leaveHR')->middleware('auth')->name('hr/leave/hr/page');
-        Route::get('hr/attendance/page', 'attendance')->middleware('auth')->name('hr/attendance/page');
-        Route::get('hr/create/leave/hr/page', 'createLeaveHR')->middleware('auth')->name('hr/create/leave/hr/page');
+    Route::middleware('auth')->prefix('hr/')->group(function () {
+        Route::controller(HRController::class)->group(function () {
+            Route::get('employee/list', 'employeeList')->name('hr/employee/list');
+            Route::post('employee/save', 'employeeSaveRecord')->name('hr/employee/save'); // save employee record
+            Route::post('employee/update', 'employeeUpdateRecord')->name('hr/employee/update'); // update employee record
+            Route::post('employee/delete', 'employeeDeleteRecord')->name('hr/employee/delete'); // delete employee record
+            
+            Route::get('holidays/page', 'holidayPage')->name('hr/holidays/page');
+            Route::post('holidays/save', 'holidaySaveRecord')->name('hr/holidays/save'); // save or update record
+            Route::post('holidays/delete', 'holidayDeleteRecord')->name('hr/holidays/delete'); // delete record
+            
+            Route::get('leave/employee/page', 'leaveEmployee')->name('hr/leave/employee/page');
+            Route::get('create/leave/employee/page', 'createLeaveEmployee')->name('hr/create/leave/employee/page');
+            Route::post('create/leave/employee/save', 'saveRecordLeave')->name('hr/create/leave/employee/save');
+            
+            Route::get('leave/hr/page', 'leaveHR')->name('hr/leave/hr/page');
+            Route::get('attendance/page', 'attendance')->name('hr/attendance/page');
+            Route::get('create/leave/hr/page', 'createLeaveHR')->name('hr/create/leave/hr/page');
 
-        Route::post('hr/get/information/leave', 'getInformationLeave')->middleware('auth')->name('hr/get/information/leave');
-       
-        Route::get('hr/attendance/main/page', 'attendanceMain')->middleware('auth')->name('hr/attendance/main/page');
-        Route::get('hr/department/page', 'department')->middleware('auth')->name('hr/department/page');
-        Route::post('hr/department/save', 'saveRecorddepartment')->middleware('auth')->name('hr/department/save');
-        Route::post('hr/department/delete', 'deleteRecorddepartment')->middleware('auth')->name('hr/department/delete');
+            Route::post('get/information/leave', 'getInformationLeave')->name('hr/get/information/leave');
+        
+            Route::get('attendance/main/page', 'attendanceMain')->name('hr/attendance/main/page');
+            Route::get('department/page', 'department')->name('hr/department/page');
+            Route::post('department/save', 'saveRecorddepartment')->name('hr/department/save');
+            Route::post('department/delete', 'deleteRecorddepartment')->name('hr/department/delete');
+        });
     });
 });
 
