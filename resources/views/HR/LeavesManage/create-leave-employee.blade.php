@@ -230,8 +230,12 @@
 
                             // Initial setup
                             updateLeaveDaysAndRemaining();
+                        } else {
+                            $('#leave_dates_display').hide();
+                            $('#select_leave_day').hide();
                         }
                     }
+                    
                 }
             } else {
                 $('#number_of_day').val('0');
