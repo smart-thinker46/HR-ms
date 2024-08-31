@@ -16,8 +16,9 @@ class Leave extends Model
         'remaining_leave',
         'date_from',
         'date_to',
-        'number_of_day',
+        'leave_date',
         'leave_day',
+        'number_of_day',
         'reason',
         'status',
     ];

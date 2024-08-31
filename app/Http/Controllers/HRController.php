@@ -6,6 +6,7 @@ use DB;
 use Hash;
 use Validator;
 use App\Models\User;
+use App\Models\Leave;
 use App\Models\Holiday;
 use App\Models\Department;
 use App\Models\LeaveInformation;
@@ -255,7 +256,6 @@ class HRController extends Controller
             'date_to'    => 'required',
             'reason'     => 'required',
         ]);
-    
     }
 
     /** leave HR */
