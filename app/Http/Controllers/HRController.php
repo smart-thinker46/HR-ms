@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use Hash;
+use Session;
 use Validator;
 use App\Models\User;
 use App\Models\Leave;
@@ -256,6 +257,29 @@ class HRController extends Controller
             'date_to'    => 'required',
             'reason'     => 'required',
         ]);
+
+        try {
+           
+            $save  = new Leave;
+            $save->staff_id         = Session::get('user_id');
+            $save->employee_name    = Session::get('name');
+            $save->leave_type       = $request->leave_type;
+            $save->remaining_leave  = $request->remaining_leave;
+            $save->date_from        = $request->date_from;
+            $save->date_to          = $request->date_to;
+            $save->number_of_day    = $request->number_of_day;
+            $save->leave_date       = json_encode($request->leave_date);
+            $save->leave_day        = json_encode($request->select_leave_day);
+            $save->reason           = $request->reason;
+            $save->save();
+    
+            Toastr::success('Apply Leave successfully :)', 'Success');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            \Log::error($e); // Log the error
+            Toastr::error('Failed Apply Leave :)', 'Error');
+            return redirect()->back();
+        }
     }
 
     /** leave HR */

@@ -42,7 +42,7 @@
                                     <div class="xl:col-span-6">
                                         <div>
                                             <label for="remainingLeaves" class="inline-block mb-2 text-base font-medium">Remaining Leaves</label>
-                                            <input type="text" name="remaining_leave" id="remaining_leave" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="0" disabled="">
+                                            <input type="text" name="remaining_leave" id="remaining_leave" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="0" readonly="">
                                         </div>
                                     </div>
                                     <div class="xl:col-span-6">
@@ -70,7 +70,7 @@
                                     <div class="xl:col-span-12">
                                         <div>
                                             <label for="number_of_day" class="inline-block mb-2 text-base font-medium">Number of Days</label>
-                                            <input type="text" name="number_of_day[]" id="number_of_day" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="0" disabled="">
+                                            <input type="text" name="number_of_day" id="number_of_day" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="0" readonly="">
                                         </div>
                                     </div>
                                     <div id="leave_day_select" class="xl:col-span-12" style="display: block">
