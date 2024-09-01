@@ -271,6 +271,7 @@ class HRController extends Controller
             $save->number_of_day    = $request->number_of_day;
             $save->leave_date       = json_encode($request->leave_date);
             $save->leave_day        = json_encode($request->select_leave_day);
+            $save->status           = 'Pending';
             $save->reason           = $request->reason;
             $save->save();
     
@@ -298,8 +299,9 @@ class HRController extends Controller
     /** create Leave HR */
     public function createLeaveHR()
     {
+        $users = User::all();
         $leaveInformation = LeaveInformation::all();
-        return view('HR.LeavesManage.create-leave-hr',compact('leaveInformation'));
+        return view('HR.LeavesManage.create-leave-hr',compact('users','leaveInformation'));
     }
 
     /** attendance Main */
