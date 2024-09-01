@@ -95,58 +95,68 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">01</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">Medical Leave</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">Going to Hospital</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">02</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">11 Oct, 2023</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">12 Oct, 2023</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">StarCode Kh</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
-                                    <span class="px-2.5 py-0.5 inline-block text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent">Approved</span>
-                                </td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
-                                    <div class="flex justify-end gap-2">
-                                        <a href="#!" data-modal-target="leaveOverviewModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 text-custom-500 bg-custom-100 hover:text-white hover:bg-custom-500 dark:bg-custom-500/20 dark:hover:bg-custom-500"><i data-lucide="info" class="size-4"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">02</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">Casual Leave</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">Going to Family Function</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">01</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">07 Sept, 2023</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">07 Sept, 2023</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">Admin</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
-                                    <span class="px-2.5 py-0.5 inline-block text-xs font-medium rounded border bg-yellow-100 border-transparent text-yellow-500 dark:bg-yellow-500/20 dark:border-transparent">Pending</span>
-                                </td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
-                                    <div class="flex justify-end gap-2">
-                                        <a href="#!" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 text-slate-500 bg-slate-100 hover:text-white hover:bg-slate-500 dark:text-zink-200 dark:bg-zink-600 dark:hover:text-white dark:hover:bg-zink-400"><i data-lucide="pencil" class="size-4"></i></a>
-                                        <a href="#!" data-modal-target="leaveOverviewModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 text-custom-500 bg-custom-100 hover:text-white hover:bg-custom-500 dark:bg-custom-500/20 dark:hover:bg-custom-500"><i data-lucide="info" class="size-4"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">03</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">Casual Leave</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">Going to Holiday</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">06</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">11 Jun, 2023</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">16 Jun, 2023</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">Admin</td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
-                                    <span class="px-2.5 py-0.5 inline-block text-xs font-medium rounded border bg-red-100 border-transparent text-red-500 dark:bg-red-500/20 dark:border-transparent">Declined</span>
-                                </td>
-                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
-                                    <div class="flex justify-end gap-2">
-                                        <a href="#!" data-modal-target="leaveOverviewModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 text-custom-500 bg-custom-100 hover:text-white hover:bg-custom-500 dark:bg-custom-500/20 dark:hover:bg-custom-500"><i data-lucide="info" class="size-4"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach($leave as $key => $value)
+                                <tr>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ ++$key }}</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ $value->leave_type }}</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ $value->reason }}</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ $value->number_of_day }}</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ $value->date_from }}</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ $value->date_to }}</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">StarCode Kh</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
+                                        @if($value->status == 'Approved')
+                                            <span class="px-2.5 py-0.5 inline-block text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent">{{ $value->status }}</span>
+                                        @elseif($value->status == 'Pending')  
+                                            <span class="px-2.5 py-0.5 inline-block text-xs font-medium rounded border bg-yellow-100 border-transparent text-yellow-500 dark:bg-yellow-500/20 dark:border-transparent">{{ $value->status }}</span>
+                                        @elseif($value->status == 'Declined')
+                                            <span class="px-2.5 py-0.5 inline-block text-xs font-medium rounded border bg-red-100 border-transparent text-red-500 dark:bg-red-500/20 dark:border-transparent">{{ $value->status }}</span>
+                                        @else
+                                        @endif
+                                    </td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
+                                        <div class="flex justify-end gap-2">
+                                            <a href="#!" data-modal-target="leaveOverviewModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 text-custom-500 bg-custom-100 hover:text-white hover:bg-custom-500 dark:bg-custom-500/20 dark:hover:bg-custom-500"><i data-lucide="info" class="size-4"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{-- <tr>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">02</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">Casual Leave</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">Going to Family Function</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">01</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">07 Sept, 2023</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">07 Sept, 2023</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">Admin</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
+                                        <span class="px-2.5 py-0.5 inline-block text-xs font-medium rounded border bg-yellow-100 border-transparent text-yellow-500 dark:bg-yellow-500/20 dark:border-transparent">Pending</span>
+                                    </td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
+                                        <div class="flex justify-end gap-2">
+                                            <a href="#!" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 text-slate-500 bg-slate-100 hover:text-white hover:bg-slate-500 dark:text-zink-200 dark:bg-zink-600 dark:hover:text-white dark:hover:bg-zink-400"><i data-lucide="pencil" class="size-4"></i></a>
+                                            <a href="#!" data-modal-target="leaveOverviewModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 text-custom-500 bg-custom-100 hover:text-white hover:bg-custom-500 dark:bg-custom-500/20 dark:hover:bg-custom-500"><i data-lucide="info" class="size-4"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">03</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">Casual Leave</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">Going to Holiday</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">06</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">11 Jun, 2023</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">16 Jun, 2023</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">Admin</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
+                                        <span class="px-2.5 py-0.5 inline-block text-xs font-medium rounded border bg-red-100 border-transparent text-red-500 dark:bg-red-500/20 dark:border-transparent">Declined</span>
+                                    </td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
+                                        <div class="flex justify-end gap-2">
+                                            <a href="#!" data-modal-target="leaveOverviewModal" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 text-custom-500 bg-custom-100 hover:text-white hover:bg-custom-500 dark:bg-custom-500/20 dark:hover:bg-custom-500"><i data-lucide="info" class="size-4"></i></a>
+                                        </div>
+                                    </td>
+                                </tr> --}}
+                            @endforeach
+
                         </tbody>
                     </table>
                 </div>

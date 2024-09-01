@@ -238,7 +238,8 @@ class HRController extends Controller
     /** leave Employee */
     public function leaveEmployee()
     {
-        return view('HR.LeavesManage.leave-employee');
+        $leave = Leave::all();
+        return view('HR.LeavesManage.leave-employee',compact('leave'));
     }
 
     /** create Leave Employee */

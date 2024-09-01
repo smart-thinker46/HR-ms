@@ -127,7 +127,6 @@
         </div>
     </div>
 
-
 @section('script')
     <script>
         // Define the URL for the AJAX request
