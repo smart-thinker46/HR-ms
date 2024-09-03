@@ -284,6 +284,13 @@ class HRController extends Controller
         }
     }
 
+    /** view detail leave employee */
+    public function viewDetailLeave()
+    {
+        $leaveInformation = LeaveInformation::all();
+        return view('HR.LeavesManage.view-detail-leave',compact('leaveInformation'));
+    }
+
     /** leave HR */
     public function leaveHR()
     {

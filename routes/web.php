@@ -91,6 +91,7 @@ Route::group(['namespace' => 'App\Http\Controllers'],function()
             Route::get('leave/employee/page', 'leaveEmployee')->name('hr/leave/employee/page');
             Route::get('create/leave/employee/page', 'createLeaveEmployee')->name('hr/create/leave/employee/page');
             Route::post('create/leave/employee/save', 'saveRecordLeave')->name('hr/create/leave/employee/save');
+            Route::get('view/detail/leave/employee/', 'viewDetailLeave');
             
             Route::get('leave/hr/page', 'leaveHR')->name('hr/leave/hr/page');
             Route::get('attendance/page', 'attendance')->name('hr/attendance/page');
