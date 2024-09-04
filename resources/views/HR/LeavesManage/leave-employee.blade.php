@@ -132,7 +132,6 @@
         <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
-
 @section('script')
     
 @endsection

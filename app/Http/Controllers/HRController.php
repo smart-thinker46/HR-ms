@@ -292,6 +292,7 @@ class HRController extends Controller
         $leaveDate   = json_decode($leaveDetail->leave_date, true); // Decode JSON to array
         $leaveDay    = json_decode($leaveDetail->leave_day, true); // Decode JSON to array
 
+
         return view('HR.LeavesManage.view-detail-leave',compact('leaveInformation','leaveDetail','leaveDate','leaveDay'));
     }
 
