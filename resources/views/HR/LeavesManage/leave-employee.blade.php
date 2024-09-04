@@ -101,7 +101,7 @@
                                     <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ $value->leave_type }}</td>
                                     <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ $value->reason }}</td>
                                     <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
-                                        <a href="{{ url('hr/view/detail/leave/employee/') }}" class="transition-all duration-150 ease-linear text-custom-500 hover:text-custom-600 user-id user_id">{{ $value->number_of_day }}</a>
+                                        <a href="{{ url('hr/view/detail/leave/employee/'.Session::get('user_id')) }}" class="transition-all duration-150 ease-linear text-custom-500 hover:text-custom-600 user-id user_id">{{ $value->number_of_day }}</a>
                                     </td>
                                     <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ $value->date_from }}</td>
                                     <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ $value->date_to }}</td>

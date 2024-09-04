@@ -285,10 +285,14 @@ class HRController extends Controller
     }
 
     /** view detail leave employee */
-    public function viewDetailLeave()
+    public function viewDetailLeave($staff_id)
     {
         $leaveInformation = LeaveInformation::all();
-        return view('HR.LeavesManage.view-detail-leave',compact('leaveInformation'));
+        $leaveDetail = Leave::where('staff_id', $staff_id)->first();
+        $leaveDate   = json_decode($leaveDetail->leave_date, true); // Decode JSON to array
+        $leaveDay    = json_decode($leaveDetail->leave_day, true); // Decode JSON to array
+
+        return view('HR.LeavesManage.view-detail-leave',compact('leaveInformation','leaveDetail','leaveDate','leaveDay'));
     }
 
     /** leave HR */
