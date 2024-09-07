@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <!--end col-->
+
                 <div class="xl:col-span-3">
                     <div class="card">
                         <div class="flex items-center gap-3 card-body">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <!--end col-->
+
                 <div class="xl:col-span-3">
                     <div class="card">
                         <div class="flex items-center gap-3 card-body">
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 </div>
-                <!--end col-->
+
                 <div class="xl:col-span-3">
                     <div class="card">
                         <div class="flex items-center gap-3 card-body">
@@ -64,9 +64,8 @@
                         </div>
                     </div>
                 </div>
-                <!--end col-->
             </div>
-            <!--end grid-->
+
             <div class="card">
                 <div class="card-body">
                     <div class="grid grid-cols-1 gap-4 mb-5 lg:grid-cols-2 xl:grid-cols-12">
@@ -105,7 +104,7 @@
                                     </td>
                                     <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ $value->date_from }}</td>
                                     <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ $value->date_to }}</td>
-                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">StarCode Kh</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ $value->approved_by }}</td>
                                     <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
                                         @if($value->status == 'Approved')
                                             <span class="px-2.5 py-0.5 inline-block text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent">{{ $value->status }}</span>
@@ -129,7 +128,6 @@
                 </div>
             </div>
         </div>
-        <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
 @section('script')
