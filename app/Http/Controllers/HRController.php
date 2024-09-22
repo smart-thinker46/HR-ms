@@ -238,7 +238,10 @@ class HRController extends Controller
     /** leave Employee */
     public function leaveEmployee()
     {
+        $annualLeave = LeaveInformation::where('leave_type','Annual Leave')->select('leave_days')->first();
+       
         $leave = Leave::where('staff_id', Session::get('user_id'))->get();
+        // $leaves = Leave::where('staff_id', Session::get('user_id'))->whereIn('leave_type')->get();
         return view('HR.LeavesManage.leave-employee',compact('leave'));
     }
 
