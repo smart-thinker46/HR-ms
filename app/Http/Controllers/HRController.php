@@ -16,7 +16,7 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class HRController extends Controller
 {
-    /** employee list */
+    /** Employee list */
     public function employeeList()
     {
         // Retrieve all employees
