@@ -5,11 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Auth;
-use Session;
-use Carbon\Carbon;
 use App\Models\User;
-use Brian2694\Toastr\Facades\Toastr;
+use Carbon\Carbon;
+use Session;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -60,15 +59,15 @@ class LoginController extends Controller
                 // Update last login
                 $user->update(['last_login' => $todayDate]);
 
-                Toastr::success('Login successful :)', 'Success');
+                flash()->success('Login successful :)');
                 return redirect()->intended('home');
             } else {
-                Toastr::error('Error: Wrong username or password :)', 'Error');
+                flash()->error('Error: Wrong username or password :)');
                 return redirect('login');
             }
         } catch (\Exception $e) {
             \Log::error($e);
-            Toastr::error('An error occurred during login :)', 'Error');
+            flash()->error('An error occurred during login :)');
             return redirect()->back();
         }
     }
@@ -84,8 +83,7 @@ class LoginController extends Controller
     {
         $request->session()->flush();
         Auth::logout();
-
-        Toastr::success('Logout successful :)', 'Success');
+        flash()->error('Logout successful :)');
         return redirect('logout/page');
     }
 }
