@@ -13,10 +13,7 @@
     <script src="{{ URL::to('assets/js/layout.js') }}"></script>
     <!-- StarCode CSS -->
     <link rel="stylesheet" href="{{ URL::to('assets/css/starcode2.css') }}">
-    <!-- message toastr -->
-	<link rel="stylesheet" href="{{ URL::to('assets/css/toastr.min.css') }}">
-	<script src="{{ URL::to('assets/js/toastr_jquery.min.js') }}"></script>
-	<script src="{{ URL::to('assets/js/toastr.min.js') }}"></script>
+    
     <style>
         .invalid-feedback {
             color: red;
