@@ -10,9 +10,8 @@ use App\Models\User;
 use App\Models\Leave;
 use App\Models\Holiday;
 use App\Models\Department;
-use App\Models\LeaveInformation;
 use Illuminate\Http\Request;
-use Brian2694\Toastr\Facades\Toastr;
+use App\Models\LeaveInformation;
 
 class HRController extends Controller
 {
@@ -118,12 +117,12 @@ class HRController extends Controller
             $user->avatar       = $photo;
             $user->save();
 
-            Toastr::success('Update record successfully :)','Success');
+            flash()->success('Update record successfully :)');
             return redirect()->back();
         } catch(\Exception $e) {
             \Log::info($e);
             DB::rollback();
-            Toastr::error('Update record fail :)','Error');
+            flash()->error('Update record fail :)');
             return redirect()->back();
         }
     }
@@ -139,12 +138,12 @@ class HRController extends Controller
                 unlink(public_path('assets/images/user/'.$request->del_photo));
             }
 
-            Toastr::success('Delete record successfully :)','Success');
+            flash()->success('Delete record successfully :)');
             return redirect()->back();
         } catch(\Exception $e) {
             \Log::info($e);
             DB::rollback();
-            Toastr::error('Delete record fail :)','Error');
+            flash()->error('ADelete record fail :)');
             return redirect()->back();
         }
     }
@@ -176,11 +175,11 @@ class HRController extends Controller
                 ]
             );
     
-            Toastr::success('Holiday created or updated successfully :)', 'Success');
+            flash()->success('Holiday created or updated successfully :)');
             return redirect()->back();
         } catch (\Exception $e) {
             \Log::error($e); // Log the error
-            Toastr::error('Failed to add holiday :)', 'Error');
+            flash()->error('Failed to add holiday :)');
             return redirect()->back();
         }
     }
@@ -193,11 +192,11 @@ class HRController extends Controller
             $holiday = Holiday::findOrFail($request->id_delete);
             $holiday->delete();
 
-            Toastr::success('Holiday deleted successfully :)', 'Success');
+            flash()->success('Holiday deleted successfully :)');
             return redirect()->back();
         } catch (\Exception $e) {
             \Log::error($e); // Log the error
-            Toastr::error('Failed to delete holiday :)', 'Error');
+            flash()->error('Failed to delete holiday :)');
             return redirect()->back();
         }
     }
@@ -278,11 +277,11 @@ class HRController extends Controller
             $save->reason           = $request->reason;
             $save->save();
     
-            Toastr::success('Apply Leave successfully :)', 'Success');
+            flash()->success('Apply Leave successfully :)');
             return redirect()->back();
         } catch (\Exception $e) {
             \Log::error($e); // Log the error
-            Toastr::error('Failed Apply Leave :)', 'Error');
+            flash()->error('Failed Apply Leave :)');
             return redirect()->back();
         }
     }
@@ -355,11 +354,11 @@ class HRController extends Controller
                 ]
             );
     
-            Toastr::success('Department created or updated successfully :)', 'Success');
+            flash()->success('Department created or updated successfully :)');
             return redirect()->back();
         } catch (\Exception $e) {
             \Log::error($e);
-            Toastr::error('Failed to add or update department :)', 'Error');
+            flash()->error('Failed to add or update department :)');
             return redirect()->back();
         }
     }
@@ -371,12 +370,12 @@ class HRController extends Controller
             // Find the department or fail if not found
             $department = Department::findOrFail($request->id_delete);
             $department->delete();
-
-            Toastr::success('Record deleted successfully :)', 'Success');
+            
+            flash()->success('Record deleted successfully :)');
             return redirect()->back();
         } catch (\Exception $e) {
             \Log::error($e); // Log the error
-            Toastr::error('Failed to delete record :)', 'Error');
+            flash()->error('Failed to delete record :)');
             return redirect()->back();
         }
     }

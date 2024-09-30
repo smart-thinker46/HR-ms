@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Carbon\Carbon;
 use Hash;
-use Brian2694\Toastr\Facades\Toastr;
 
 class RegisterController extends Controller
 {
@@ -46,11 +45,11 @@ class RegisterController extends Controller
             $register->password  = Hash::make($request->password);
             $register->save();
 
-            Toastr::success('Account created successfully :)', 'Success');
+            flash()->success('Account created successfully :)');
             return redirect('login');
         } catch (\Exception $e) {
             \Log::error($e);
-            Toastr::error('Failed to create account :)', 'Error');
+            flash()->error('Failed to create account :)');
             return redirect()->back();
         }
     }
