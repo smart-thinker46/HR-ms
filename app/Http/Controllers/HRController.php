@@ -77,22 +77,21 @@ class HRController extends Controller
             ]);
             $register->save();
 
-            Toastr::success('Record added successfully :)', 'Success');
+            flash()->success('Record added successfully :)');
             return redirect()->back();
         } catch (\Exception $e) {
             \Log::error($e); // Log the error
-            Toastr::error('Failed to add record :)', 'Error');
+            flash()->error('Failed to add record :)');
             return redirect()->back();
         }
     }
 
-    /** update record employee */
+    /** Update Record Employee */
     public function employeeUpdateRecord(Request $request)
     {
         try {
 
             $user = User::find($request->id);
-            
             if (!empty($request->photo)) { // ! empty image upload file name
                 $photo = $request->name.'-'.time().'.'.$request->photo->extension();  
                 $request->photo->move(public_path('assets/images/user'), $photo);
@@ -100,9 +99,8 @@ class HRController extends Controller
                     unlink(public_path('assets/images/user/'.$user->avatar));
                 }
             } else {
-                $photo = $user->avatar; // get image name from databases
+                $photo = null; // get image name from databases
             }
-
             $user->name         = $request->name;
             $user->email        = $request->email;
             $user->position     = $request->position;
@@ -127,11 +125,10 @@ class HRController extends Controller
         }
     }
 
-    /** delete record employee */
+    /** Delete Record Employee */
     public function employeeDeleteRecord(Request $request)
     {
         try {
-
             $deleteRecord = User::findOrFail($request->id_delete);
             $deleteRecord->delete();
             if (!empty($request->del_photo)) {
@@ -143,7 +140,7 @@ class HRController extends Controller
         } catch(\Exception $e) {
             \Log::info($e);
             DB::rollback();
-            flash()->error('ADelete record fail :)');
+            flash()->error('Delete record fail :)');
             return redirect()->back();
         }
     }

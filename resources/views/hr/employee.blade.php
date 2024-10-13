@@ -495,85 +495,83 @@
     <!--end delete modal-->
 
 @section('script')
-@endsection
+    {{-- update js --}}
+    <script>
+        $(document).on('click','#editEmployee',function()
+        {
+            var _this = $(this).parents('tr');
+            var photo = _this.find('.photo').text();
+            if (!photo) {
+                var photos = "{{asset('assets/images/user.png')}}" // empty photo
+            } else {
+                var photos = "{{asset('assets/images/user/')}}"+'/'+photo // !empty photo
+            }
 
-{{-- update js --}}
-<script>
-    $(document).on('click','#editEmployee',function()
-    {
-        var _this = $(this).parents('tr');
-        var photo = _this.find('.photo').text();
-        if (!photo) {
-            var photos = "{{asset('assets/images/user.png')}}" // empty photo
-        } else {
-            var photos = "{{asset('assets/images/user/')}}"+'/'+photo // !empty photo
+            $('#e_photo_edit').attr("src",photos);
+            $('#e_id').val(_this.find('.id').text());
+            $('#e_employee_id').val(_this.find('.user_id').text());
+            $('#e_name').val(_this.find('.name').text());
+            $('#e_email').val(_this.find('.email').text());
+            $('#e_position').val(_this.find('.position').text());
+            $('#e_phone_number').val(_this.find('.phone_number').text());
+            $('#e_location').val(_this.find('.location').text());
+            $('#e_join_date').val(_this.find('.join_date').text());
+            $('#e_experience').val(_this.find('.experience').text());
+            $('#e_department').val(_this.find('.department').text());
+            $('#e_role_name').val(_this.find('.role_name').text());
+            $('#e_status').val(_this.find('.status').text());
+            $('#e_designation').val(_this.find('.designation').text());
+
+        });
+    </script>
+
+    {{-- delete js --}}
+    <script>
+        $(document).on('click','#deleteRecord',function()
+        {
+            var _this = $(this).parents('tr');
+            $('#e_idDelete').val(_this.find('.ids').text());
+            $('#del_photo').val(_this.find('.photo').text());
+        });
+    </script>
+
+    <script>
+        //for add profile
+        if (document.querySelector("#profile-img-file-input")) {
+            document.querySelector("#profile-img-file-input").addEventListener("change", function () {
+                var preview = document.querySelector(".user-profile-image");
+                var file = document.querySelector(".profile-img-file-input").files[0];
+                var reader = new FileReader();
+                reader.addEventListener(
+                    "load",
+                    function () {
+                        preview.src = reader.result;
+                    },
+                    false
+                );
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            });
         }
-
-        $('#e_photo_edit').attr("src",photos);
-        $('#e_id').val(_this.find('.id').text());
-        $('#e_employee_id').val(_this.find('.user_id').text());
-        $('#e_name').val(_this.find('.name').text());
-        $('#e_email').val(_this.find('.email').text());
-        $('#e_position').val(_this.find('.position').text());
-        $('#e_phone_number').val(_this.find('.phone_number').text());
-        $('#e_location').val(_this.find('.location').text());
-        $('#e_join_date').val(_this.find('.join_date').text());
-        $('#e_experience').val(_this.find('.experience').text());
-        $('#e_department').val(_this.find('.department').text());
-        $('#e_role_name').val(_this.find('.role_name').text());
-        $('#e_status').val(_this.find('.status').text());
-        $('#e_designation').val(_this.find('.designation').text());
-
-    });
-</script>
-
-{{-- delete js --}}
-<script>
-    $(document).on('click','#deleteRecord',function()
-    {
-        var _this = $(this).parents('tr');
-        $('#e_idDelete').val(_this.find('.id').text());
-        $('#del_photo').val(_this.find('.photo').text());
-    });
-</script>
-
-<script>
-    //for add profile
-    if (document.querySelector("#profile-img-file-input")) {
-        document.querySelector("#profile-img-file-input").addEventListener("change", function () {
-            var preview = document.querySelector(".user-profile-image");
-            var file = document.querySelector(".profile-img-file-input").files[0];
-            var reader = new FileReader();
-            reader.addEventListener(
-                "load",
-                function () {
-                    preview.src = reader.result;
-                },
-                false
-            );
-            if (file) {
-                reader.readAsDataURL(file);
-            }
-        });
-    }
-    //for edit profile
-    if (document.querySelector("#edit-profile-img-file-input")) {
-        document.querySelector("#edit-profile-img-file-input").addEventListener("change", function () {
-            var preview = document.querySelector(".edit-user-profile-image");
-            var file = document.querySelector(".edit-profile-img-file-input").files[0];
-            var reader = new FileReader();
-            reader.addEventListener(
-                "load",
-                function () {
-                    preview.src = reader.result;
-                },
-                false
-            );
-            if (file) {
-                reader.readAsDataURL(file);
-            }
-        });
-    }
-</script>
-
+        //for edit profile
+        if (document.querySelector("#edit-profile-img-file-input")) {
+            document.querySelector("#edit-profile-img-file-input").addEventListener("change", function () {
+                var preview = document.querySelector(".edit-user-profile-image");
+                var file = document.querySelector(".edit-profile-img-file-input").files[0];
+                var reader = new FileReader();
+                reader.addEventListener(
+                    "load",
+                    function () {
+                        preview.src = reader.result;
+                    },
+                    false
+                );
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+    </script>
+@endsection
 @endsection
