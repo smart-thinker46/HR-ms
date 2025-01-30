@@ -83,7 +83,7 @@ class LoginController extends Controller
     {
         $request->session()->flush();
         Auth::logout();
-        flash()->error('Logout successful :)');
+        flash()->success('Logout successful :)');
         return redirect('logout/page');
     }
 }
